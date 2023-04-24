@@ -1,2 +1,67 @@
-asda
-seu merda seu bosta
+// AINDA NÃO SEI MEXER NO GITHUB
+
+
+package ClassesDeDados;
+         
+public class Jogador {
+    private String nome;
+    private int conta;
+    private double saldo;
+    void ganhar(double lucro){
+        saldo = saldo + lucro;
+    };
+    void perder(double perda){
+        saldo = saldo - perda;
+    };
+
+    String pegarNome(){
+        return nome;
+    }
+    
+    public String getNome(){
+        return nome;
+    }
+
+    public String setNome(){
+        return this.nome = nome;
+    }
+
+    public int getConta(){
+        return conta;
+    }
+
+    public String setConta(){
+        return this.conta = conta;
+    } //PARA PEGAR O NÚMERO DA CONTA PARA TRANSFERIR
+}
+
+package ClassesDeDados;
+
+public class JogadorVip extends Jogador{
+    
+}
+
+package ClassesDeDados;
+import jogador;
+
+public class Jogo {
+    public static void man(String[] args){
+        jogador j1 = new jogador();
+
+    }
+    
+}
+
+package ClassesDeDados;
+
+public static class Patrocinador {
+
+    void investir(jogador.conta){
+        debitar(jogador,valor);
+    }
+    
+    
+    
+}
+
+
