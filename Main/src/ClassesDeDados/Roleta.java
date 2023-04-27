@@ -1,6 +1,7 @@
 package ClassesDeDados;
 import java.util.Random;
 
+//alteração
 public class Roleta {
     //Provavelmene fazer vetores usando Arraylist é melhor
     void roleta(int conta,double aposta){
