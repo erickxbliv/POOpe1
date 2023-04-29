@@ -9,7 +9,7 @@ package ClassesDeDados;
 public class Jogador {
     private String nome;
     private int conta;
-    private double saldo;
+    double saldo;
     private double aposta;
 
     if(saldo < aposta){
