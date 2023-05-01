@@ -2,10 +2,10 @@ package ClassesDeRepositorios;
 import ClassesDeDados.Jogador;
 //import java.util.;
 
-public class ClassesDeRepositorios {
+public class Repositorio {
     
-      Jogador maquina = newObj();
+      Jogador maquina = new Jogador();
 
-	}
+	
     
 }

@@ -5,17 +5,17 @@ import java.util.Random;
 public class Roleta {
     //Provavelmene fazer vetores usando Arraylist é melhor
     void roleta(int conta,double aposta){
-        private Random gerador = new Random(); 
+        Random gerador = new Random(); 
 	
-        private tamanhoDaTela = 3;
+        int tamanho = 3;
         int[] tela;
         tela = new int[3];
 
 
 
         //iniciando vetor que representa os slots da roleta;
-        for(int i = 0;i<tamanhoTela;i++){
-            tela[i] = new int;
+        for(int i = 0; i < tamanho; i++){
+            //tela[i] = new int;
         }
         
         //gerar numeros aleatorios para roleta

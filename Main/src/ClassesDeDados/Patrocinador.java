@@ -1,9 +1,9 @@
 package ClassesDeDados;
 
-public static class Patrocinador {
+public class Patrocinador extends Pessoas {
 
-    void investir(jogador.conta){
-        debitar(jogador,valor);
+    void investir(int conta_jogador){
+        //debitar(jogador,valor);
     }
     
     
