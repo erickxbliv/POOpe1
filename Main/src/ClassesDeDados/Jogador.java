@@ -8,9 +8,8 @@ package ClassesDeDados;
 
 public class Jogador extends Pessoas{
 
-    private String nome;
-    private int conta;
-    double saldo;
+    int personalidade_financeira;
+    
     private double aposta;
 
     //if(saldo < aposta){//apostar}
