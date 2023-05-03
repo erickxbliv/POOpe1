@@ -1,28 +1,26 @@
 package ClassesDeDados;
 import java.util.Random;
+import java.util.ArrayList;
 
-//alteração
-public class Roleta {
-    //Provavelmene fazer vetores usando Arraylist é melhor
+//APAGUEI O CODIGO ANTIGO COM VETOR MAS ERICK PODE PEGAR NOS CÓDIGOS ANTIGOS
+public class Roleta { //mudar pra CacaNiquel
+
+   
     void roleta(int conta,double aposta){
         Random gerador = new Random(); 
-	
-        int tamanho = 3;
-        int[] tela;
-        tela = new int[3];
-
-
-
-        //iniciando vetor que representa os slots da roleta;
-        for(int i = 0; i < tamanho; i++){
-            //tela[i] = new int;
-        }
-        
-        //gerar numeros aleatorios para roleta
-        for(int i=0;i<3;i++) {
-            tela[i]=gerador.nextInt();
-            System.out.printf("%d",tela[i]);
-        }
+        ArrayList<Integer> tela = new ArrayList<>();
+        int tamTela = 3;
+        for(int i=0; i < tamTela; i++){
+        gerador.nextInt(10);
+        //tela.add(7);
+      }
+      int a = tela.get(0);
+      int b = tela.get(1);
+      int c = tela.get(2);
+      if((a == b) && (b== c)){ // PRECISA DESSES PARENTESES
+          System.out.println("PARA BENS, VOCÊ GANHOU");
+          
+        }//PODEMOS COLOCAR PARA SE CONSEGUIR ALGUMA OUTRA SEQUENCIA GANHA OUTRO VALOR MENOR, TIPO SE CAIR SÓ NUMEROS PARES
         
     }
     
