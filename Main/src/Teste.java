@@ -48,6 +48,14 @@ public class Teste{         //classe de teste (Main)
 
         apostadores.add(cliente);
 
+        cliente.nome = "Andre Castri";
+        cliente.id = 2;
+        cliente.tipo = "Jogador";
+        cliente.cadastro(1001);
+        cliente.transacao(1343.25);
+
+        apostadores.add(cliente);
+
 
 
     }
