@@ -11,8 +11,14 @@ public class Jogo {
     //não pode ter um score negativo, o mínimo é 0;
 	private int QuantJogadores;
    QuantJogadores = getQuantJogadores;
+
+   
+   
+
    public static void main(String[] args){
       //jogador j1 = new jogador();
+
+     
    }
     
 }

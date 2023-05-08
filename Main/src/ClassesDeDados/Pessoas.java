@@ -5,7 +5,7 @@ public class Pessoas {
     public String nome;    //nome da pessoa
     public int id;         //seu identificador entre seu tipo
     public String tipo;       //sua funcao no sistema
-
+ 
     protected int conta;      //a conta da pessoa
     protected double saldo = 0.0;   //o dinheiro disponivel na conta
 
@@ -13,8 +13,20 @@ public class Pessoas {
         this.conta = cpf;
     }
 
-    public void transacao(double montante){     
+    public void depositar(double valor){
+
+    }
+
+    void creditar(int conta, int valor){
+        if(valor>0){
+            saldo = saldo + valor;
+        }
+    }
+
+
+    pubpulic void transacao(double montante){     
         this.saldo += montante;
     }
     
+
 }

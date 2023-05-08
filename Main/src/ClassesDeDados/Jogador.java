@@ -16,7 +16,7 @@ public class Jogador extends Pessoas{
 
     int apostar(double aposta){
          if(aposta<Pessoas.saldo){
-            //deitar essa valor do saldo; Fazer o jogo receber a aposta
+            saldo = saldo - aposta;  //deitar essa valor do saldo; Fazer o jogo receber a aposta
          }else{
             System.out.println("Você não tem esse valor para apostar \n");
          }
@@ -27,7 +27,7 @@ public class Jogador extends Pessoas{
         return score;
     }
 
-    public void setScore(double score){
+    private void setScore(double score){
         this.score = score;
     }
 
@@ -50,12 +50,16 @@ public class Jogador extends Pessoas{
         this.nome = nome;
     }
 
+
     public int getConta(){
         return conta;
     }//PARA PEGAR O NÚMERO DA CONTA PARA TRANSFERIR
 
     
-
+    public Jogador(string nome, int conta){
+        setNome(nome);
+        this.Pessoas.conta = QuantJogadores + 1;
+    }
 
 
 
