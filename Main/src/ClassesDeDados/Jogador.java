@@ -8,10 +8,11 @@ package ClassesDeDados;
 
 public class Jogador extends Pessoas{
 
-    int personalidade_financeira;
+                                                    //int personalidade_financeira;
     
     private double aposta;
 
+    private double score;
     //if(saldo < aposta){//apostar}
 
     //metodos gets e sets para pegar e dar valores a variaveis "private"
@@ -22,25 +23,22 @@ public class Jogador extends Pessoas{
         saldo = saldo - perda;
     };
 
-    String pegarNome(){
-        return nome;
-    }
     
     public String getNome(){
         return nome;
     }
 
-    public void setNome(){
-        //return this.nome = nome;
+    public void setNome(string nome){
+        return this.nome = nome;
     }
 
     public int getConta(){
         return conta;
-    }
+    }//PARA PEGAR O NÚMERO DA CONTA PARA TRANSFERIR
 
-    public void setConta(){
-        //return this.conta = conta;
-    } //PARA PEGAR O NÚMERO DA CONTA PARA TRANSFERIR
+    
+
+
 
 
 }

@@ -15,6 +15,9 @@ public class Teste{         //classe de teste (Main)
 
 
         System.out.println("Bem vindo! Como e o seu nome? Identifique-se: ");
+        getNome()
+
+
 
         //receber dados de um usuario totalmente novo
         //dependendo do seu tipo salvar ele em um local diferente (grupos de dados)
@@ -45,6 +48,14 @@ public class Teste{         //classe de teste (Main)
         cliente.tipo = "Jogador";
         cliente.cadastro(1000);
         cliente.transacao(537.5);
+
+        apostadores.add(cliente);
+
+        cliente.nome = "Andre Castri";
+        cliente.id = 2;
+        cliente.tipo = "Jogador";
+        cliente.cadastro(1001);
+        cliente.transacao(1343.25);
 
         apostadores.add(cliente);
 
