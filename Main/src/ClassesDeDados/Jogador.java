@@ -1,4 +1,6 @@
 package ClassesDeDados;
+import Pessoas.java;
+import Jogo.java;
 
 
 
@@ -12,15 +14,31 @@ public class Jogador extends Pessoas{
     
     private double aposta;
 
+    int apostar(double aposta){
+         if(aposta<Pessoas.saldo){
+            //deitar essa valor do saldo; Fazer o jogo receber a aposta
+         }else{
+            System.out.println("Você não tem esse valor para apostar \n");
+         }
+    }
+
     private double score;
-    //if(saldo < aposta){//apostar}
+    public String getScore(){
+        return score;
+    }
+
+    public void setScore(double score){
+        this.score = score;
+    }
 
     //metodos gets e sets para pegar e dar valores a variaveis "private"
-    void ganhar(double lucro){
+    void ganhar(double lucro, double aumentoScore){
         saldo = saldo + lucro;
+        score = score + aumentoScore;
     };
-    void perder(double perda){
+    void perder(double perda, double perdaScore){
         saldo = saldo - perda;
+        score = score - perdaScore;
     };
 
     
@@ -29,7 +47,7 @@ public class Jogador extends Pessoas{
     }
 
     public void setNome(string nome){
-        return this.nome = nome;
+        this.nome = nome;
     }
 
     public int getConta(){

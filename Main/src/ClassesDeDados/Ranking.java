@@ -8,8 +8,8 @@ public class Ranking {
     //lsita de jogadores
     ArrayList<jogador> rank = new ArrayList<>();
     
-    getQuantJogadores
-    get
+    getQuantJogadores;
+    
     int calculoDeRank(){//listaDeJogadores)
         for(int i=0;i<QuantJogadores;i++){
             //chamar função de ordenação do rank
