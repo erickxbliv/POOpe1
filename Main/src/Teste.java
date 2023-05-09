@@ -1,6 +1,7 @@
 import ClassesDeDados.Jogador;
 import ClassesDeDados.Funcionario;
-import ClassesDeRepositorios.Repositorio;
+import ClassesDeDados.Pessoas;
+import ClassesDeRepositorios.RepositorioUsuarios;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -8,16 +9,42 @@ import java.util.ArrayList;
 public class Teste{         //classe de teste (Main)
     public static void main(String[] args){
 
-        ArrayList<Jogador> apostadores = new ArrayList<Jogador>();
-        ArrayList<Funcionario> trabalhadores = new ArrayList<Funcionario>();
-        preencher_teste(apostadores);
+        //ArrayList<Jogador> apostadores = new ArrayList<Jogador>();
+        //ArrayList<Funcionario> trabalhadores = new ArrayList<Funcionario>();
+        //apostadores = RepositorioUsuarios.InicializarMeusUsuarios();
+        RepositorioUsuarios lista = new RepositorioUsuarios();
+        lista.InicializarMeusUsuarios();
         
+        
+        Scanner myObj = new Scanner(System.in);
+
+        boolean sucesso = true;
+        Pessoas teste;
+
+        while(sucesso){
+
+            System.out.println("Bem vindo! O que você deseja? \n1- login \n2- cadastrar novo");
+            String escolha = myObj.nextLine();
+
+            if(escolha.equals("1")){
+
+                System.out.print("Digite seu nome: ");
+                String NomeDeUsuario = myObj.nextLine();
+                System.out.println(lista.BuscarEstaPessoa(NomeDeUsuario));
+                
+
+            }else if(escolha.equals("2")){
 
 
-        System.out.println("Bem vindo! Como e o seu nome? Identifique-se: ");
-        getNome()
+            }else if(escolha.equals("3")){
+
+                
+            }
+
+        }
 
 
+        myObj.close();
 
         //receber dados de um usuario totalmente novo
         //dependendo do seu tipo salvar ele em um local diferente (grupos de dados)
@@ -39,27 +66,5 @@ public class Teste{         //classe de teste (Main)
 
 
 
-    public static void preencher_teste(ArrayList<Jogador> apostadores){
-
-        Jogador cliente = new Jogador();
-        
-        cliente.nome = "Erick de Brito";
-        cliente.id = 1;
-        cliente.tipo = "Jogador";
-        cliente.cadastro(1000);
-        cliente.transacao(537.5);
-
-        apostadores.add(cliente);
-
-        cliente.nome = "Andre Castri";
-        cliente.id = 2;
-        cliente.tipo = "Jogador";
-        cliente.cadastro(1001);
-        cliente.transacao(1343.25);
-
-        apostadores.add(cliente);
-
-
-
-    }
+    
 }

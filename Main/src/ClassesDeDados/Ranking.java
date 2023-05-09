@@ -1,17 +1,17 @@
 package ClassesDeDados;
-import jogador.java;
+import java.util.ArrayList;
 
 public class Ranking {
 
     //depois de cada partida vai ter um calculo de rank geral de score
 
     //lsita de jogadores
-    ArrayList<jogador> rank = new ArrayList<>();
+    ArrayList<Jogador> rank = new ArrayList<>();
     
-    getQuantJogadores;
+    int getQuantJogadores;
     
-    int calculoDeRank(){//listaDeJogadores)
-        for(int i=0;i<QuantJogadores;i++){
+    public void calculoDeRank(){//listaDeJogadores)
+        for(int i=0;i < getQuantJogadores;i++){
             //chamar função de ordenação do rank
         }
 

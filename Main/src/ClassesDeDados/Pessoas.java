@@ -9,6 +9,8 @@ public class Pessoas {
     protected int conta;      //a conta da pessoa
     protected double saldo = 0.0;   //o dinheiro disponivel na conta
 
+    public int data_criacao;
+
     public void cadastro(int cpf){      //n sei como funciona isso mas seria como se o cadastro do perfil e da conta bancaria fosse separado
         this.conta = cpf;
     }
@@ -24,7 +26,7 @@ public class Pessoas {
     }
 
 
-    pubpulic void transacao(double montante){     
+    public void transacao(double montante){     
         this.saldo += montante;
     }
     

@@ -8,5 +8,7 @@ public class JogadorVip extends Jogador{
     public void getTaxaBonus(){
       this.saldo = saldo + (saldo * taxaBonus);
 	  }
+
+    
     
 }

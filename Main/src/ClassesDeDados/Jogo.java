@@ -1,6 +1,6 @@
 package ClassesDeDados;
 import java.util.Random;
-import Ranking.java;
+
 
 //chamar as outras classe dentro da classe jogo e ver como fazer uma classe receber a outra
 //realmente existe troca por fichas
@@ -10,7 +10,7 @@ import Ranking.java;
 public class Jogo {
     //não pode ter um score negativo, o mínimo é 0;
 	private int QuantJogadores;
-   QuantJogadores = getQuantJogadores;
+   //QuantJogadores = getQuantJogadores;
 
    
    

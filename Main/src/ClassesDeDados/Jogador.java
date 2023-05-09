@@ -1,8 +1,4 @@
 package ClassesDeDados;
-import Pessoas.java;
-import Jogo.java;
-
-
 
 //Anotação: FAZER OS CRUDS, Ranking, Score e Login
 //PESQUISAR SOBRE UM OBJETO SER DONO DO OUTRO
@@ -13,17 +9,19 @@ public class Jogador extends Pessoas{
                                                     //int personalidade_financeira;
     
     private double aposta;
+    private double score;
 
-    int apostar(double aposta){
-         if(aposta<Pessoas.saldo){
+    void apostar (double aposta){
+         if(aposta < this.saldo){
             saldo = saldo - aposta;  //deitar essa valor do saldo; Fazer o jogo receber a aposta
          }else{
             System.out.println("Você não tem esse valor para apostar \n");
          }
     }
 
-    private double score;
-    public String getScore(){
+   
+    public int getScore(){
+        int score = 0;
         return score;
     }
 
@@ -46,7 +44,7 @@ public class Jogador extends Pessoas{
         return nome;
     }
 
-    public void setNome(string nome){
+    public void setNome(String nome){
         this.nome = nome;
     }
 
@@ -56,9 +54,9 @@ public class Jogador extends Pessoas{
     }//PARA PEGAR O NÚMERO DA CONTA PARA TRANSFERIR
 
     
-    public Jogador(string nome, int conta){
-        setNome(nome);
-        this.Pessoas.conta = QuantJogadores + 1;
+    public void Jogadornentendiqueisso (String nome, int conta){
+        //setNome(nome);
+        //this.conta = QuantJogadores + 1;
     }
 
 
