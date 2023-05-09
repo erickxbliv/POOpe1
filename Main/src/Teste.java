@@ -18,31 +18,30 @@ public class Teste{         //classe de teste (Main)
         
         Scanner myObj = new Scanner(System.in);
 
-        boolean sucesso = true;
-        Pessoas teste;
+        boolean sucesso = false;
+        Jogador teste;
 
-        while(sucesso){
+        while(!sucesso){
 
-            System.out.println("Bem vindo! O que você deseja? \n1- login \n2- cadastrar novo");
+            System.out.println("Bem vindo! O que você deseja? \n1- login \n2- cadastrar novo \n3 - fechar");
             String escolha = myObj.nextLine();
 
             if(escolha.equals("1")){
 
                 System.out.print("Digite seu nome: ");
                 String NomeDeUsuario = myObj.nextLine();
-                System.out.println(lista.BuscarEstaPessoa(NomeDeUsuario));
+                teste = lista.BuscarEstaPessoa(NomeDeUsuario);
+                if(teste != null) sucesso = true;
                 
 
             }else if(escolha.equals("2")){
 
 
-            }else if(escolha.equals("3")){
-
-                
-            }
+            }else if(escolha.equals("3")) return;
 
         }
 
+        System.out.println("Bem vindo!");
 
         myObj.close();
 

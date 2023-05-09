@@ -30,6 +30,7 @@ public class RepositorioUsuarios {
     protected void preencher_teste(ArrayList<Jogador> apostadores){
 
         Jogador cliente = new Jogador();
+        Jogador cliente2 = new Jogador();
         
         cliente.nome = "Erick de Brito";
         cliente.id = 1;
@@ -39,28 +40,27 @@ public class RepositorioUsuarios {
 
         apostadores.add(cliente);
 
-        cliente.nome = "Andre Castro";
-        cliente.id = 2;
-        cliente.tipo = "Jogador";
-        cliente.cadastro(1001);
-        cliente.transacao(1343.25);
+        cliente2.nome = "Andre Castro";
+        cliente2.id = 2;
+        cliente2.tipo = "Jogador";
+        cliente2.cadastro(1001);
+        cliente2.transacao(1343.25);
 
-        apostadores.add(cliente);
+        apostadores.add(cliente2);
 
     }
 
 
-    public boolean BuscarEstaPessoa(String NomeDeUsuario){
+    public Jogador BuscarEstaPessoa(String NomeDeUsuario){
 
         int tam;
         tam = this.apostadores.size();
 
         for(int i = 0; i < tam; i++){
-            System.out.println(this.apostadores.get(i).nome + " =? " + NomeDeUsuario);
-            //if(this.apostadores.get(i).nome.equals(NomeDeUsuario)) return true;
+            if(this.apostadores.get(i).nome.equals(NomeDeUsuario)) return this.apostadores.get(i);
         }
 
-        return false;
+        return null;
     }
 
 }
