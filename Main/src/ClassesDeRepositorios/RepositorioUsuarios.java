@@ -1,5 +1,6 @@
 package ClassesDeRepositorios;
 import ClassesDeDados.Jogador;
+import ClassesDeDados.Pessoas;     //pra tirar os funcionarios so remover isso e onde der erro troca de pessoas pra jogadores
 import ClassesDeDados.Funcionario;
 import java.util.ArrayList;
 
@@ -7,59 +8,87 @@ import java.util.ArrayList;
 
 public class RepositorioUsuarios {
 
-    private ArrayList<Jogador> apostadores;
+    private ArrayList<Pessoas> populacao;
     //private ArrayList<Funcionario> trabalhadores;
 
 
-    public ArrayList<Jogador> InicializarMeusUsuarios(){
+    public void InicializarMeusUsuarios(){
 
-        this.apostadores = new ArrayList<Jogador>();
-        preencher_teste(apostadores);
+        this.populacao = new ArrayList<Pessoas>();
+        preencher_teste(populacao);
 
-        return apostadores;
+        //return populacao;
     }
 
 
 
 
-    public void criar_usuario(){
+    public boolean criar_usuario(String NomeDeUsuario, int conta, String resposta){
+
+        Pessoas novo = new Pessoas();
+        novo = BuscarEstaPessoa(NomeDeUsuario);
+        if(novo != null){
+            System.out.println("\nPoxa, este apelido já está em uso, tente novamente.");
+            return true;
+        }
+
+        novo = new Pessoas();
+        novo.nome = NomeDeUsuario;
+        novo.id = this.populacao.size();
+        if(resposta.equals("sim")) novo.tipo = "Funcionario";
+        else novo.tipo = "Jogador";
+
+        novo.biometria_banco(conta);
+        this.populacao.add(novo);
+        //novo.data_criacao = ;
+
+        return false;
+        
     }
 
 
 
-    protected void preencher_teste(ArrayList<Jogador> apostadores){
+    protected void preencher_teste(ArrayList<Pessoas> populacao){
 
         Jogador cliente = new Jogador();
         Jogador cliente2 = new Jogador();
+        Funcionario staff = new Funcionario();
         
         cliente.nome = "Erick de Brito";
         cliente.id = 1;
         cliente.tipo = "Jogador";
-        cliente.cadastro(1000);
-        cliente.transacao(537.5);
+        cliente.biometria_banco(1204);
+        //cliente.transacao(537.5);
 
-        apostadores.add(cliente);
+        populacao.add(cliente);
 
         cliente2.nome = "Andre Castro";
         cliente2.id = 2;
         cliente2.tipo = "Jogador";
-        cliente2.cadastro(1001);
-        cliente2.transacao(1343.25);
+        cliente2.biometria_banco(5632);
+        //cliente2.transacao(1343.25);
 
-        apostadores.add(cliente2);
+        populacao.add(cliente2);
+
+        staff.nome = "Paola";
+        staff.id = 3;
+        staff.tipo = "Funcionario";
+        staff.biometria_banco(4567);
+        //staff.transacao(1234.4);
+
+        populacao.add(staff);
 
     }
 
 
-    public Jogador BuscarEstaPessoa(String NomeDeUsuario){
+    public Pessoas BuscarEstaPessoa(String NomeDeUsuario){
 
         int tam;
-        tam = this.apostadores.size();
+        tam = this.populacao.size();
 
         for(int i = 0; i < tam; i++){
-            if(this.apostadores.get(i).nome.equals(NomeDeUsuario)) return this.apostadores.get(i);
+            if(this.populacao.get(i).nome.equals(NomeDeUsuario)) return this.populacao.get(i);
         }
-
         return null;
     }
 

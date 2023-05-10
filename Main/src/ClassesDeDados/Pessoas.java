@@ -1,9 +1,10 @@
 package ClassesDeDados;
+import java.util.Random;
 
 public class Pessoas {
     
     public String nome;    //nome da pessoa
-    public int id;         //seu identificador entre seu tipo
+    public int id;         //seu identificador entre a populacao
     public String tipo;       //sua funcao no sistema
  
     protected int conta;      //a conta da pessoa
@@ -11,8 +12,13 @@ public class Pessoas {
 
     public int data_criacao;
 
-    public void cadastro(int cpf){      //n sei como funciona isso mas seria como se o cadastro do perfil e da conta bancaria fosse separado
-        this.conta = cpf;
+    public void biometria_banco(int conta){
+        this.conta = conta;
+
+        Random gerador = new Random(); 
+        double saldo = gerador.nextInt(conta);      //melhorar isso.. como fazer pra decidir o dinheiro na conta da pessoa?
+        this.saldo = saldo;
+        
     }
 
     public void depositar(double valor){

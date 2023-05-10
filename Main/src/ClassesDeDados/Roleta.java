@@ -3,7 +3,7 @@ import java.util.Random;
 import java.util.ArrayList;
 
 //APAGUEI O CODIGO ANTIGO COM VETOR MAS ERICK PODE PEGAR NOS CÓDIGOS ANTIGOS
-public class Roleta { //mudar pra CacaNiquel
+public class Roleta extends Jogo { //mudar pra CacaNiquel
 
    
     void roleta(int conta,double aposta){
@@ -14,6 +14,7 @@ public class Roleta { //mudar pra CacaNiquel
         gerador.nextInt(10);
         //tela.add(7);
       }
+      
       int a = tela.get(0);
       int b = tela.get(1);
       int c = tela.get(2);

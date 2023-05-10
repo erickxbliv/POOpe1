@@ -1,5 +1,6 @@
 package ClassesDeDados;
 import java.util.Random;
+import java.util.ArrayList;
 
 
 //chamar as outras classe dentro da classe jogo e ver como fazer uma classe receber a outra
@@ -9,17 +10,17 @@ import java.util.Random;
 
 public class Jogo {
     //não pode ter um score negativo, o mínimo é 0;
-	private int QuantJogadores;
+	protected int MaxJogadores;
+   protected ArrayList<String> ApostasDisponiveis;
+   protected double TotalApostado;
+
+
    //QuantJogadores = getQuantJogadores;
 
    
    
 
-   public static void main(String[] args){
-      //jogador j1 = new jogador();
-
-     
-   }
+  
     
 }
 
