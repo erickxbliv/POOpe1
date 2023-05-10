@@ -11,7 +11,7 @@ public class Roleta extends Jogo { //mudar pra CacaNiquel
         ArrayList<Integer> tela = new ArrayList<>();
         int tamTela = 3;
         for(int i=0; i < tamTela; i++){
-        gerador.nextInt(10);
+            tela.add(gerador.nextInt(10));
         //tela.add(7);
       }
       
@@ -19,7 +19,7 @@ public class Roleta extends Jogo { //mudar pra CacaNiquel
       int b = tela.get(1);
       int c = tela.get(2);
       if((a == b) && (b== c)){ // PRECISA DESSES PARENTESES
-          System.out.println("PARA BENS, VOCÊ GANHOU");
+          System.out.println("PARABENS, VOCÊ GANHOU");
           
         }//PODEMOS COLOCAR PARA SE CONSEGUIR ALGUMA OUTRA SEQUENCIA GANHA OUTRO VALOR MENOR, TIPO SE CAIR SÓ NUMEROS PARES
         

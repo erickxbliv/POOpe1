@@ -1,6 +1,7 @@
 import ClassesDeDados.Jogador;
 import ClassesDeDados.Funcionario;
 import ClassesDeDados.Pessoas;
+import ClassesDeRepositorios.RepositorioJogador;
 import ClassesDeRepositorios.RepositorioUsuarios;
 
 import java.util.Scanner;
@@ -14,14 +15,20 @@ public class Teste{         //classe de teste (Main)
         //apostadores = RepositorioUsuarios.InicializarMeusUsuarios();
 
         //int data de hj
-        RepositorioUsuarios lista = new RepositorioUsuarios();
-        lista.InicializarMeusUsuarios();
-        
+        RepositorioJogador publico = new RepositorioJogador();
+        publico.InicializarMeusJogadores();
+        //aqui tambem chamar os outros repositorios
+
+        //Jogador J = null;
+        //Funcionario F = null;
         
         Scanner myObj = new Scanner(System.in);
         boolean sucesso = false;
-        Pessoas teste = null;
+        
         String NomeDeUsuario;
+        int funcao = -1;
+        int conta;
+        String resposta;
 
         while(!sucesso){
 
@@ -32,20 +39,20 @@ public class Teste{         //classe de teste (Main)
 
                 System.out.print("\nDigite seu nome: ");
                 NomeDeUsuario = myObj.nextLine();
-                teste = lista.BuscarEstaPessoa(NomeDeUsuario);
-                if(teste != null) sucesso = true;
-                
+                funcao = ContaExisteQualFuncao(NomeDeUsuario,publico);
+                if(funcao != -1) sucesso = true;
+
             }else if(escolha.equals("2")){
 
                 System.out.print("\nPara criar sua conta, e necessario possuir uma conta bancaria. Informe a seguir: ");
-                int conta =  myObj.nextInt();
+                conta =  myObj.nextInt();
                 String lixo = myObj.nextLine();
                 System.out.print("Certo! Voce veio para a entrevista de emprego? Caso tenha, digite 'sim': ");
-                String resposta = myObj.nextLine();
+                resposta = myObj.nextLine();
 
                 System.out.print("Vamos criar sua conta! Qual vai ser o seu apelido aqui no Cassino? "); 
                 do{ NomeDeUsuario = myObj.nextLine();
-                }while(lista.criar_usuario(NomeDeUsuario,conta,resposta));
+                }while(ContaExisteQualFuncao(NomeDeUsuario,publico) == -1);
 
                 //sucesso = true;           //n da pra encerrar tem q fazer o login
             }else if(escolha.equals("3")) return;
@@ -53,6 +60,7 @@ public class Teste{         //classe de teste (Main)
 
             System.out.print("\n");
         }
+
 
         System.out.println("Bem vindo!");
 
@@ -72,8 +80,28 @@ public class Teste{         //classe de teste (Main)
 
     }
 
+    private static int ContaExisteQualFuncao(String NomeDeUsuario, RepositorioJogador publico){
+
+        int funcao = -1;
+        funcao = publico.JogadorExiste(NomeDeUsuario);
+        if(funcao == -1){
+
+            //funcao = publico.FuncionarioExiste(NomeDeUsuario);
+            
+
+        }
+        
+        return funcao;      //se a conta nao existe retorna -1, se existe retorna seu tipo
+    }
 
 
+    private void Jogar(){
+
+
+
+
+        return;
+    }
 
 
     private void config_conta(){

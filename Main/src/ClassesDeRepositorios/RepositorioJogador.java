@@ -6,16 +6,16 @@ import java.util.ArrayList;
 
 //import java.util.;
 
-public class RepositorioUsuarios {
+public class RepositorioJogador {
 
-    private ArrayList<Pessoas> populacao;
+    private ArrayList<Jogador> apostadores;
     //private ArrayList<Funcionario> trabalhadores;
 
 
-    public void InicializarMeusUsuarios(){
+    public void InicializarMeusJogadores(){
 
-        this.populacao = new ArrayList<Pessoas>();
-        preencher_teste(populacao);
+        this.apostadores = new ArrayList<Jogador>();
+        preencher_teste(apostadores);
 
         //return populacao;
     }
@@ -23,23 +23,22 @@ public class RepositorioUsuarios {
 
 
 
-    public boolean criar_usuario(String NomeDeUsuario, int conta, String resposta){
+    public boolean criar_Jogador(String NomeDeUsuario, int conta){
 
-        Pessoas novo = new Pessoas();
-        novo = BuscarEstaPessoa(NomeDeUsuario);
+        Jogador novo = new Jogador();
+        novo = BuscarEsteJogador(NomeDeUsuario);
         if(novo != null){
             System.out.println("\nPoxa, este apelido já está em uso, tente novamente.");
             return true;
         }
 
-        novo = new Pessoas();
+        novo = new Jogador();
         novo.nome = NomeDeUsuario;
-        novo.id = this.populacao.size();
-        if(resposta.equals("sim")) novo.tipo = "Funcionario";
-        else novo.tipo = "Jogador";
+        novo.id = this.apostadores.size();
+        novo.tipo = "Jogador";
 
         novo.setConta(conta);
-        this.populacao.add(novo);
+        this.apostadores.add(novo);
         //novo.data_criacao = ;
 
         return false;
@@ -48,15 +47,15 @@ public class RepositorioUsuarios {
 
 
 
-    protected void preencher_teste(ArrayList<Pessoas> populacao){
+    protected void preencher_teste(ArrayList<Jogador> populacao){
 
         Jogador cliente = new Jogador();
         Jogador cliente2 = new Jogador();
-        Funcionario staff = new Funcionario();
         
         cliente.nome = "Erick de Brito";
         cliente.id = 1;
-        cliente.tipo = "Jogador";
+        //cliente.tipo = "Jogador";
+        cliente2.funcao = 1;
         cliente.setConta(1204);
         //cliente.transacao(537.5);
 
@@ -64,35 +63,38 @@ public class RepositorioUsuarios {
 
         cliente2.nome = "Andre Castro";
         cliente2.id = 2;
-        cliente2.tipo = "Jogador";
+        //cliente2.tipo = "Jogador";
+        cliente2.funcao = 1;
         cliente2.setConta(5632);
         //cliente2.transacao(1343.25);
 
         populacao.add(cliente2);
 
-        staff.nome = "Paola";
-        staff.id = 3;
-        staff.tipo = "Funcionario";
-        staff.setConta(4567);
-        //staff.transacao(1234.4);
-
-        populacao.add(staff);
-
     }
 
 
-    public Pessoas BuscarEstaPessoa(String NomeDeUsuario){
+    public Jogador BuscarEsteJogador(String NomeDeUsuario){
 
         int tam;
-        tam = this.populacao.size();
+        tam = this.apostadores.size();
 
         for(int i = 0; i < tam; i++){
-            if(this.populacao.get(i).nome.equals(NomeDeUsuario)) return this.populacao.get(i);
+            if(this.apostadores.get(i).nome.equals(NomeDeUsuario)) return this.apostadores.get(i);
         }
         return null;
     }
 
 
+
+    public int JogadorExiste(String NomeDeUsuario){
+
+        int tam;
+        tam = this.apostadores.size();
+        for(int i = 0; i < tam; i++){
+            if(this.apostadores.get(i).nome.equals(NomeDeUsuario)) return this.apostadores.get(i).funcao;
+        }
+        return -1;
+    }
 
 /* 
     public static void serializeDataOut(IHandler ish)throws IOException{
