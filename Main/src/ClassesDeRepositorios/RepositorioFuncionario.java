@@ -1,21 +1,19 @@
 package ClassesDeRepositorios;
-import ClassesDeDados.Jogador;
-//import ClassesDeDados.Pessoas;     //pra tirar os funcionarios so remover isso e onde der erro troca de pessoas pra jogadores
-//import ClassesDeDados.Funcionario;
+import ClassesDeDados.Funcionario;
 import java.util.ArrayList;
 
 //import java.util.;
 
-public class RepositorioJogador {
+public class RepositorioFuncionario {
 
-    private ArrayList<Jogador> apostadores;
+    private ArrayList<Funcionario> equipe;
     //private ArrayList<Funcionario> trabalhadores;
 
 
-    public void InicializarMeusJogadores(){
+    public void InicializarMeusFuncionarios(){
 
-        this.apostadores = new ArrayList<Jogador>();
-        preencher_teste(apostadores);
+        this.equipe = new ArrayList<Funcionario>();
+        preencher_teste(equipe);
 
         //return populacao;
     }
@@ -23,22 +21,22 @@ public class RepositorioJogador {
 
 
 
-    public boolean criar_Jogador(String NomeDeUsuario, int conta){
+    public boolean criar_Funcionario(String NomeDeUsuario, int conta){
 
-        Jogador novo = new Jogador();
-        novo = BuscarEsteJogador(NomeDeUsuario);
+        Funcionario novo = new Funcionario();
+        novo = BuscarEsteFuncionario(NomeDeUsuario);
         if(novo != null){
             System.out.println("\nPoxa, este apelido já está em uso, tente novamente.");
             return true;
         }
 
-        novo = new Jogador();
+        novo = new Funcionario();
         novo.nome = NomeDeUsuario;
-        novo.id = this.apostadores.size();
+        novo.id = this.equipe.size();
         novo.tipo = "Jogador";
 
         novo.setConta(conta);
-        this.apostadores.add(novo);
+        this.equipe.add(novo);
         //novo.data_criacao = ;
 
         return false;
@@ -47,51 +45,61 @@ public class RepositorioJogador {
 
 
 
-    protected void preencher_teste(ArrayList<Jogador> populacao){
+    protected void preencher_teste(ArrayList<Funcionario> populacao){
 
-        Jogador cliente = new Jogador();
-        Jogador cliente2 = new Jogador();
+        Funcionario staff = new Funcionario();
+        Funcionario staff2 = new Funcionario();
+        Funcionario staff3 = new Funcionario();
         
-        cliente.nome = "Erick de Brito";
-        cliente.id = 1;
+        staff.nome = "Paola";
+        staff.id = 1;
         //cliente.tipo = "Jogador";
-        cliente2.funcao = 1;
-        cliente.setConta(1204);
+        staff.funcao = 2;
+        staff.setConta(2675);
         //cliente.transacao(537.5);
 
-        populacao.add(cliente);
+        populacao.add(staff);
 
-        cliente2.nome = "Andre Castro";
-        cliente2.id = 2;
-        //cliente2.tipo = "Jogador";
-        cliente2.funcao = 1;
-        cliente2.setConta(5632);
-        //cliente2.transacao(1343.25);
+        staff2.nome = "Pedro";
+        staff2.id = 2;
+        //cliente.tipo = "Jogador";
+        staff2.funcao = 2;
+        staff2.setConta(7462);
+        //cliente.transacao(537.5);
 
-        populacao.add(cliente2);
+        populacao.add(staff2);
+
+        staff3.nome = "Lucas";
+        staff3.id = 3;
+        //cliente.tipo = "Jogador";
+        staff3.funcao = 2;
+        staff3.setConta(5793);
+        //cliente.transacao(537.5);
+
+        populacao.add(staff3);
 
     }
 
 
-    public Jogador BuscarEsteJogador(String NomeDeUsuario){
+    public Funcionario BuscarEsteFuncionario(String NomeDeUsuario){
 
         int tam;
-        tam = this.apostadores.size();
+        tam = this.equipe.size();
 
         for(int i = 0; i < tam; i++){
-            if(this.apostadores.get(i).nome.equals(NomeDeUsuario)) return this.apostadores.get(i);
+            if(this.equipe.get(i).nome.equals(NomeDeUsuario)) return this.equipe.get(i);
         }
         return null;
     }
 
 
 
-    public int JogadorExiste(String NomeDeUsuario){
+    public int FuncionarioExiste(String NomeDeUsuario){
 
         int tam;
-        tam = this.apostadores.size();
+        tam = this.equipe.size();
         for(int i = 0; i < tam; i++){
-            if(this.apostadores.get(i).nome.equals(NomeDeUsuario)) return this.apostadores.get(i).funcao;
+            if(this.equipe.get(i).nome.equals(NomeDeUsuario)) return this.equipe.get(i).funcao;
         }
         return -1;
     }

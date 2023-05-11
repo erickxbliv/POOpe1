@@ -1,8 +1,9 @@
-import ClassesDeDados.Jogador;
-import ClassesDeDados.Funcionario;
-import ClassesDeDados.Pessoas;
+//import ClassesDeDados.Jogador;
+//import ClassesDeDados.Funcionario;
+//import ClassesDeDados.Pessoas;
 import ClassesDeRepositorios.RepositorioJogador;
-import ClassesDeRepositorios.RepositorioUsuarios;
+import ClassesDeRepositorios.RepositorioFuncionario;
+//import ClassesDeRepositorios.RepositorioUsuarios;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -17,6 +18,8 @@ public class Teste{         //classe de teste (Main)
         //int data de hj
         RepositorioJogador publico = new RepositorioJogador();
         publico.InicializarMeusJogadores();
+        RepositorioFuncionario carteiras = new RepositorioFuncionario();
+        carteiras.InicializarMeusFuncionarios();
         //aqui tambem chamar os outros repositorios
 
         //Jogador J = null;
@@ -39,7 +42,7 @@ public class Teste{         //classe de teste (Main)
 
                 System.out.print("\nDigite seu nome: ");
                 NomeDeUsuario = myObj.nextLine();
-                funcao = ContaExisteQualFuncao(NomeDeUsuario,publico);
+                funcao = ContaExisteQualFuncao(NomeDeUsuario,publico,carteiras);
                 if(funcao != -1) sucesso = true;
 
             }else if(escolha.equals("2")){
@@ -52,8 +55,11 @@ public class Teste{         //classe de teste (Main)
 
                 System.out.print("Vamos criar sua conta! Qual vai ser o seu apelido aqui no Cassino? "); 
                 do{ NomeDeUsuario = myObj.nextLine();
-                }while(ContaExisteQualFuncao(NomeDeUsuario,publico) == -1);
+                }while(ContaExisteQualFuncao(NomeDeUsuario,publico,carteiras) == -1);
 
+                if(resposta.equals("sim")) carteiras.criar_Funcionario(NomeDeUsuario,conta);
+                else publico.criar_Jogador(NomeDeUsuario,conta);
+                
                 //sucesso = true;           //n da pra encerrar tem q fazer o login
             }else if(escolha.equals("3")) return;
 
@@ -77,18 +83,18 @@ public class Teste{         //classe de teste (Main)
         //esses outros humanos tambem sofrem as consequencias que foram mostradas para o usuario
         //salvar os dados no final para guardar o estado atual de cada execucao
         
-
+        return;
     }
 
-    private static int ContaExisteQualFuncao(String NomeDeUsuario, RepositorioJogador publico){
+    private static int ContaExisteQualFuncao(String NomeDeUsuario, RepositorioJogador publico, RepositorioFuncionario carteiras){
 
         int funcao = -1;
         funcao = publico.JogadorExiste(NomeDeUsuario);
         if(funcao == -1){
 
             //funcao = publico.FuncionarioExiste(NomeDeUsuario);
-            
-
+            funcao = carteiras.FuncionarioExiste(NomeDeUsuario);
+             
         }
         
         return funcao;      //se a conta nao existe retorna -1, se existe retorna seu tipo
