@@ -1,11 +1,10 @@
 package ClassesDeDados;
 import java.util.Random;
 
-public class Pessoas {
+public abstract class Pessoas {
     
     public String nome;    //nome da pessoa
     public int id;         //seu identificador entre a populacao
-    
     public int funcao;
  
     protected int conta;      //a conta da pessoa
@@ -27,6 +26,19 @@ public class Pessoas {
         this.saldo = saldo;
         
     }
+
+    public String getNome(){
+        return nome;
+    }
+
+    public void setNome(String nome){
+        this.nome = nome;
+    }
+
+
+
+
+
 
     public void depositar(double valor){
 

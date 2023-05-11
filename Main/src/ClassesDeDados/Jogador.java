@@ -1,15 +1,17 @@
 package ClassesDeDados;
 
-//Anotação: FAZER OS CRUDS, Ranking, Score e Login
-//PESQUISAR SOBRE UM OBJETO SER DONO DO OUTRO
-
-
 public class Jogador extends Pessoas{
 
-                                                    //int personalidade_financeira;
-    
-    private double aposta;
+    int personalidade;
     private double score;
+
+
+
+
+
+
+
+
 
     void apostar (double aposta){
          if(aposta < this.saldo){
@@ -38,16 +40,6 @@ public class Jogador extends Pessoas{
         saldo = saldo - perda;
         score = score - perdaScore;
     };
-
-    
-    public String getNome(){
-        return nome;
-    }
-
-    public void setNome(String nome){
-        this.nome = nome;
-    }
-
 
     public int getConta(){
         return conta;

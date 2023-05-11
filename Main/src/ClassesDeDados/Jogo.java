@@ -2,20 +2,21 @@ package ClassesDeDados;
 import java.util.Random;
 import java.util.ArrayList;
 
-
-//chamar as outras classe dentro da classe jogo e ver como fazer uma classe receber a outra
-//realmente existe troca por fichas
-//TODA VEZ QUE CRIAR OU DELETAR, VAI SER MODIFICADO
-//NO REPOSITORIO COM O ARRAYLIST QUE ESTÁ LÁ
-
 public class Jogo {
     //não pode ter um score negativo, o mínimo é 0;
-	protected int MaxJogadores;
-   protected ArrayList<String> ApostasDisponiveis;
-   protected double TotalApostado;
+    protected int MaxJogadores;
+    protected ArrayList<String> ApostasDisponiveis;
+    protected double TotalApostado;
 
 
-   //QuantJogadores = getQuantJogadores;
+   public void Roleta(){
+
+
+
+
+
+    return;
+   }
 
    
    
@@ -25,3 +26,35 @@ public class Jogo {
 }
 
 
+/*
+
+package ClassesDeDados;
+import java.util.Random;
+import java.util.ArrayList;
+
+//APAGUEI O CODIGO ANTIGO COM VETOR MAS ERICK PODE PEGAR NOS CÓDIGOS ANTIGOS
+public class Roleta extends Jogo { //mudar pra CacaNiquel
+
+   
+    void roleta(int conta,double aposta){
+        Random gerador = new Random(); 
+        ArrayList<Integer> tela = new ArrayList<>();
+        int tamTela = 3;
+        for(int i=0; i < tamTela; i++){
+            tela.add(gerador.nextInt(10));
+        //tela.add(7);
+      }
+      
+      int a = tela.get(0);
+      int b = tela.get(1);
+      int c = tela.get(2);
+      if((a == b) && (b== c)){ // PRECISA DESSES PARENTESES
+          System.out.println("PARABENS, VOCÊ GANHOU");
+          
+        }//PODEMOS COLOCAR PARA SE CONSEGUIR ALGUMA OUTRA SEQUENCIA GANHA OUTRO VALOR MENOR, TIPO SE CAIR SÓ NUMEROS PARES
+        
+    }
+    
+}
+
+ */
