@@ -4,19 +4,62 @@ import java.util.ArrayList;
 
 public class Jogo {
     //não pode ter um score negativo, o mínimo é 0;
+
+    private ArrayList<String> lista = new ArrayList<>();
     protected int MaxJogadores;
     protected ArrayList<String> ApostasDisponiveis;
     protected double TotalApostado;
+    
+
+    public void inicializar(){
+
+        this.lista.add("Caca Niquel");
+        this.lista.add("Roleta");
+
+        return;
+    }
 
 
-   public void Roleta(){
 
+    public int mostrar_biblioteca(){
+
+        int tam;
+        tam = this.lista.size();
+        for(int i = 0; i < tam; i++){
+            System.out.println((i+1) + " - " + this.lista.get(i));
+        }
+        
+        return tam + 1;
+    }
+
+
+    public double Desktop(int escolha, double aposta){
+
+        
+
+        return 0.00;
+    }
+    
+
+    public void CacaNiquel(){
+
+        Random gerador = new Random(); 
+        ArrayList<Integer> maquina = new ArrayList<>();
+        int tamTela = 3;
+        for(int i = 0; i < tamTela; i++){
+            maquina.add(gerador.nextInt(3));
+        }
+        
+        if((maquina.get(0) == maquina.get(1)) && (maquina.get(1) == maquina.get(2))){
+
+
+        }
         
 
 
 
         return;
-   }
+    }
 
    
    

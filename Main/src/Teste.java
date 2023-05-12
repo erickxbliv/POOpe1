@@ -1,9 +1,8 @@
 import ClassesDeDados.Jogador;
-import ClassesDeDados.Funcionario;
-//import ClassesDeDados.Pessoas;
+//import ClassesDeDados.Funcionario;
+import ClassesDeDados.Jogo;
 import ClassesDeRepositorios.RepositorioJogador;
-import ClassesDeRepositorios.RepositorioFuncionario;
-//import ClassesDeRepositorios.RepositorioUsuarios;
+//import ClassesDeRepositorios.RepositorioFuncionario;
 
 import java.util.Scanner;
 import java.util.ArrayList;
@@ -11,15 +10,13 @@ import java.util.ArrayList;
 public class Teste{         //classe de teste (Main)
     public static void main(String[] args){
 
-        //ArrayList<Jogador> apostadores = new ArrayList<Jogador>();
-        //ArrayList<Funcionario> trabalhadores = new ArrayList<Funcionario>();
-        //apostadores = RepositorioUsuarios.InicializarMeusUsuarios();
-
         //int data de hj
         RepositorioJogador publico = new RepositorioJogador();
         publico.InicializarMeusJogadores();
-        RepositorioFuncionario carteiras = new RepositorioFuncionario();
-        carteiras.InicializarMeusFuncionarios();
+        Jogo Arcade = new Jogo();
+        Arcade.inicializar();
+        //RepositorioFuncionario carteiras = new RepositorioFuncionario();
+        //carteiras.InicializarMeusFuncionarios();
 
         
         Scanner myObj = new Scanner(System.in);
@@ -28,7 +25,7 @@ public class Teste{         //classe de teste (Main)
         String NomeDeUsuario = null;        //preenchimento de dados sobre a conta
         int funcao = -1;
         int conta;
-        String resposta;
+        //String resposta;
 
         while(!sucesso){
 
@@ -39,23 +36,25 @@ public class Teste{         //classe de teste (Main)
 
                 System.out.print("\nDigite seu nome: ");
                 NomeDeUsuario = myObj.nextLine();
-                funcao = ContaExisteQualFuncao(NomeDeUsuario,publico,carteiras);
+                funcao = ContaExisteQualFuncao(NomeDeUsuario,publico);
                 if(funcao != -1) sucesso = true;
 
             }else if(escolha.equals("2")){
 
-                System.out.print("\nPara criar sua conta, e necessario possuir uma conta bancaria. Informe a seguir: ");
-                conta =  myObj.nextInt();
+                System.out.print("\nPara criar sua conta, e necessario possuir uma conta bancaria. Informe seus 6 digitos a seguir: ");
+                do{
+                    conta =  myObj.nextInt();
+                }while(conta < 100000 || conta > 999999);
                 String lixo = myObj.nextLine();
-                System.out.print("Certo! Voce veio para a entrevista de emprego? Caso tenha, digite 'sim': ");
-                resposta = myObj.nextLine();
+                //System.out.print("Certo! Voce veio para a entrevista de emprego? Caso tenha, digite 'sim': ");
+                //resposta = myObj.nextLine();
 
                 System.out.print("Vamos criar sua conta! Qual vai ser o seu apelido aqui no Cassino? "); 
                 do{ NomeDeUsuario = myObj.nextLine();
-                }while(ContaExisteQualFuncao(NomeDeUsuario,publico,carteiras) == -1);
+                }while(ContaExisteQualFuncao(NomeDeUsuario,publico) == -1);
 
-                if(resposta.equals("sim")) carteiras.criar_Funcionario(NomeDeUsuario,conta);
-                else publico.criar_Jogador(NomeDeUsuario,conta);
+                //if(resposta.equals("sim")) carteiras.criar_Funcionario(NomeDeUsuario,conta); else 
+                publico.criar_Jogador(NomeDeUsuario,conta);
                 
                 //sucesso = true;           //n da pra encerrar tem q fazer o login
             }else if(escolha.equals("3")) return;
@@ -76,10 +75,10 @@ public class Teste{         //classe de teste (Main)
 
         while(!sair){       //pra caso uma pessoa troque de funcao
 
-            funcao = ContaExisteQualFuncao(NomeDeUsuario,publico,carteiras);
+            funcao = ContaExisteQualFuncao(NomeDeUsuario,publico);
 
-            if(funcao == 1) sair = ElevadorClientes(NomeDeUsuario,publico);
-            else if(funcao == 2) sair = ElevadorFuncionarios(NomeDeUsuario,carteiras);
+            if(funcao == 1) sair = ElevadorClientes(NomeDeUsuario,publico,Arcade);
+            //else if(funcao == 2) sair = ElevadorFuncionarios(NomeDeUsuario,carteiras);
             else if(funcao == 3) sair = ElevadorDeLuxo(NomeDeUsuario);
 
         }
@@ -100,12 +99,13 @@ public class Teste{         //classe de teste (Main)
     }
 
 
-    private static int ContaExisteQualFuncao(String NomeDeUsuario, RepositorioJogador publico, RepositorioFuncionario carteiras){
+    //private static int ContaExisteQualFuncao(String NomeDeUsuario, RepositorioJogador publico, RepositorioFuncionario carteiras){
+    private static int ContaExisteQualFuncao(String NomeDeUsuario, RepositorioJogador publico){
 
         int funcao = -1;
         funcao = publico.JogadorExiste(NomeDeUsuario);
         if(funcao == -1){
-            funcao = carteiras.FuncionarioExiste(NomeDeUsuario);
+            //funcao = carteiras.FuncionarioExiste(NomeDeUsuario);
             if(funcao == -1){
                 //se tiver outro repositorio pra olhar..
             }    
@@ -118,10 +118,7 @@ public class Teste{         //classe de teste (Main)
 
 
 
-    private static boolean ElevadorClientes(String NomeDeUsuario, RepositorioJogador publico){
-
-        Jogador usuario = new Jogador();
-        usuario = publico.BuscarEsteJogador(NomeDeUsuario);
+    private static boolean ElevadorClientes(String NomeDeUsuario, RepositorioJogador publico, Jogo Arcade){
 
         boolean sair = false;
         String escolha;
@@ -129,11 +126,11 @@ public class Teste{         //classe de teste (Main)
 
         while(!sair){
 
-            System.out.println("O que voce deseja " + usuario.getNome() + "? \n1 - Jogar \n2 - configuracoes \n3 - fechar \n");
+            System.out.println("O que voce deseja " + NomeDeUsuario + "? \n1 - Jogar \n2 - configuracoes \n3 - fechar \n");
             escolha = myObj.nextLine();
 
             if(escolha.equals("1")){
-                Jogar();
+                Jogar(NomeDeUsuario,publico,Arcade);
 
 
             }else if(escolha.equals("2")){
@@ -153,6 +150,12 @@ public class Teste{         //classe de teste (Main)
     }
 
 
+
+
+
+
+    /* 
+
     private static boolean ElevadorFuncionarios(String NomeDeUsuario, RepositorioFuncionario carteiras){
 
 
@@ -162,6 +165,7 @@ public class Teste{         //classe de teste (Main)
         return true;
     }
 
+    */
 
     private static boolean ElevadorDeLuxo(String NomeDeUsuario){
 
@@ -172,11 +176,39 @@ public class Teste{         //classe de teste (Main)
         return true;
     }
 
-    private static void Jogar(){
+    private static void Jogar(String NomeDeUsuario, RepositorioJogador publico, Jogo Arcade){
+
+        Scanner myObj = new Scanner(System.in);
+        Jogo arcade = new Jogo();
+
+        int escolha;
+        boolean sucesso = false;
+        int total = 0;
+        double aposta;
+
+        while(!sucesso){
+
+            System.out.println("De qual jogo voce deseja participar?");
+            total = Arcade.mostrar_biblioteca();
+            System.out.println((total+1) + " - Voltar\n");
+            escolha = myObj.nextInt();
+
+            if(escolha == (total+1)) return;
+            else{
+                
+                do{
+
+                    System.out.print("\nQuanto vc deseja apostar em Reais? Troque ',' por '.' ok? R$ ");
+                    aposta = myObj.nextDouble();
+                }while(!publico.PodeArcar(NomeDeUsuario,aposta));
+                publico.IniciarJogo(NomeDeUsuario,Arcade,escolha,aposta);
+                
+            
+            }
+        }
 
 
-
-
+        myObj.close();
         return;
     }
 

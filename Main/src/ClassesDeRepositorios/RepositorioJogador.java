@@ -1,15 +1,11 @@
 package ClassesDeRepositorios;
 import ClassesDeDados.Jogador;
-//import ClassesDeDados.Pessoas;     //pra tirar os funcionarios so remover isso e onde der erro troca de pessoas pra jogadores
-//import ClassesDeDados.Funcionario;
+import ClassesDeDados.Jogo;
 import java.util.ArrayList;
-
-//import java.util.;
 
 public class RepositorioJogador {
 
     private ArrayList<Jogador> apostadores;
-    //private ArrayList<Funcionario> trabalhadores;
 
 
     public void InicializarMeusJogadores(){
@@ -17,7 +13,6 @@ public class RepositorioJogador {
         this.apostadores = new ArrayList<Jogador>();
         preencher_teste(apostadores);
 
-        //return populacao;
     }
 
 
@@ -95,6 +90,35 @@ public class RepositorioJogador {
         }
         return -1;
     }
+
+    
+    public boolean PodeArcar(String NomeDeUsuario, double aposta){
+
+        Jogador usuario = new Jogador();
+        usuario = BuscarEsteJogador(NomeDeUsuario);
+
+        if(usuario.getSaldo() < aposta) return false;
+        else return true;
+    }
+
+    public void IniciarJogo(String NomeDeUsuario, Jogo Arcade, int escolha, double aposta){
+
+        Jogador usuario = new Jogador();
+        usuario = BuscarEsteJogador(NomeDeUsuario);
+
+        double montante = Arcade.Desktop(escolha,aposta);
+        
+        
+
+
+
+
+
+    }
+
+
+
+
 
 /* 
     public static void serializeDataOut(IHandler ish)throws IOException{

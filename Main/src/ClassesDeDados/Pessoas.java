@@ -18,12 +18,20 @@ public abstract class Pessoas {
         return this.funcao;
     }
 
+    public double getSaldo(){
+        return this.saldo;
+    }
+
+    public void setSaldo(double saldo){
+        this.saldo = saldo;
+    }
+
     public void setConta(int conta){
         this.conta = conta;
 
         Random gerador = new Random(); 
         double saldo = gerador.nextInt(conta);      //melhorar isso.. como fazer pra decidir o dinheiro na conta da pessoa?
-        this.saldo = saldo;
+        setSaldo(saldo);
         
     }
 
@@ -34,7 +42,6 @@ public abstract class Pessoas {
     public void setNome(String nome){
         this.nome = nome;
     }
-
 
 
 

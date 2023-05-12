@@ -1,3 +1,5 @@
+/*
+
 package ClassesDeDados;
 
 public class Funcionario extends Pessoas{
@@ -6,3 +8,5 @@ public class Funcionario extends Pessoas{
     int salario_atual;
     
 }
+
+*/

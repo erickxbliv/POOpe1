@@ -1,3 +1,5 @@
+/* 
+
 package ClassesDeRepositorios;
 import ClassesDeDados.Funcionario;
 import java.util.ArrayList;
@@ -104,36 +106,6 @@ public class RepositorioFuncionario {
         return -1;
     }
 
-/* 
-    public static void serializeDataOut(IHandler ish)throws IOException{
-        String fileName= "Test.txt";
-        FileOutputStream fos = new FileOutputStream(fileName);
-        ObjectOutputStream oos = new ObjectOutputStream(fos);
-        oos.writeObject(ish);
-        oos.close();
-    }
-    
-    public static IHandler serializeDataIn(){
-       String fileName= "Test.txt";
-       FileInputStream fin = new FileInputStream(fileName);
-       ObjectInputStream ois = new ObjectInputStream(fin);
-       IHandler iHandler= (IHandler) ois.readObject();
-       ois.close();
-       return iHandler;
-    }
-
-
-    try{
-        FileOutputStream fileOutputStream = new FileOutputStream("Dog.ser");
-        ObjectOutputStream objectOutputStream = new ObjectOutputStream(fileOutputStream);
-        //Writing the Dog object 
-        objectOutputStream.writeObject(dog);
-        //Close the ObjectOutputStream
-        objectOutputStream.close();
-        }catch(IOException e){
-          e.printStackTrace
-        }
-
-        */
-
 }
+
+*/
