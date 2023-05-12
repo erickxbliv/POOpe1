@@ -35,11 +35,12 @@ public class Jogador extends Pessoas{
     void ganhar(double lucro, double aumentoScore){
         saldo = saldo + lucro;
         score = score + aumentoScore;
-    };
+    }
+
     void perder(double perda, double perdaScore){
         saldo = saldo - perda;
         score = score - perdaScore;
-    };
+    }
 
     public int getConta(){
         return conta;
