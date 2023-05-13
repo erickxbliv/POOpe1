@@ -10,6 +10,8 @@ public class RepositorioJogador {
 
     private ArrayList<Jogador> apostadores; //Arraylist de jogadores
 
+    public ArrayList<Jogador> rank = new ArrayList<Jogador>();      //que isso?
+
 
     public void InicializarMeusJogadores(){
 
@@ -44,12 +46,13 @@ public class RepositorioJogador {
 
         Jogador cliente = new Jogador();
         Jogador cliente2 = new Jogador();
+        Jogador cliente3 = new Jogador();
         
         cliente.nome = "Erick de Brito";
         cliente.id = 1;
         //cliente.tipo = "Jogador";
         cliente2.funcao = 1;
-        cliente.setConta(1204);
+        cliente.setConta(120445);
         //cliente.transacao(537.5);
 
         populacao.add(cliente);
@@ -58,10 +61,18 @@ public class RepositorioJogador {
         cliente2.id = 2;
         //cliente2.tipo = "Jogador";
         cliente2.funcao = 1;
-        cliente2.setConta(5632);
+        cliente2.setConta(563282);
         //cliente2.transacao(1343.25);
 
         populacao.add(cliente2);
+
+
+        cliente3.nome = "a";
+        cliente3.id = 3;
+        cliente3.funcao = 1;
+        cliente3.setConta(639264);
+
+        populacao.add(cliente3);
 
     }
 
@@ -105,11 +116,19 @@ public class RepositorioJogador {
         usuario = BuscarEsteJogador(NomeDeUsuario);
 
         double montante = Arcade.Desktop(escolha,aposta);
-
+        usuario.transacao(montante);
+        return;
     }
 
-    public ArrayList<Jogador> rank = new ArrayList<Jogador>();
+    
+    public double ConsultarSaldo(String NomeDeUsuario){
 
+        Jogador usuario;
+        double saldo = 0.0;
+        usuario = BuscarEsteJogador(NomeDeUsuario);
+        if(usuario != null) saldo = usuario.getSaldo();
+        return saldo;
+    }
 
 
 

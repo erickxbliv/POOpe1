@@ -74,13 +74,13 @@ public class Teste{         //classe de teste (Main)
         boolean sair = false;
 
         while(!sair){       //pra caso uma pessoa troque de funcao
-
+            System.out.println("TESTEEEEEEEEEEEE");
             funcao = ContaExisteQualFuncao(NomeDeUsuario,publico);
 
             if(funcao == 1) sair = ElevadorClientes(NomeDeUsuario,publico,Arcade);
             //else if(funcao == 2) sair = ElevadorFuncionarios(NomeDeUsuario,carteiras);
             else if(funcao == 3) sair = ElevadorDeLuxo(NomeDeUsuario);
-
+            else return;
         }
         
 
@@ -134,7 +134,7 @@ public class Teste{         //classe de teste (Main)
 
 
             }else if(escolha.equals("2")){
-                sair = config_conta();
+                sair = config_conta(NomeDeUsuario,publico);
                 if(sair) return false; 
                 //se a pessoa pedir pra voltar de la, sair recebe falso aqui, se vir verdade, dai e pra retornar daq sem sair do loop main
                 
@@ -148,10 +148,6 @@ public class Teste{         //classe de teste (Main)
         myObj.close();
         return true;
     }
-
-
-
-
 
 
     /* 
@@ -168,10 +164,6 @@ public class Teste{         //classe de teste (Main)
     */
 
     private static boolean ElevadorDeLuxo(String NomeDeUsuario){
-
-
-
-
 
         return true;
     }
@@ -197,30 +189,60 @@ public class Teste{         //classe de teste (Main)
             else{
                 
                 do{
-
                     System.out.print("\nQuanto vc deseja apostar em Reais? Troque ',' por '.' ok? R$ ");
                     aposta = myObj.nextDouble();
                 }while(!publico.PodeArcar(NomeDeUsuario,aposta));
                 publico.IniciarJogo(NomeDeUsuario,Arcade,escolha,aposta);
-                
-            
+                sucesso = true;
             }
         }
-
 
         myObj.close();
         return;
     }
 
 
-    private static boolean config_conta(){
+    private static boolean config_conta(String NomeDeUsuario, RepositorioJogador publico){
 
         //se a pessoa mudar de classe, retorna verdade, se simplesmente voltar, retorna falso pra nao sair do loop de elevador
+        int escolha;
+        Scanner myObj = new Scanner(System.in);
+        boolean sempre = true;
+        double saldo_atual;
+
+        while(sempre){
+
+            System.out.println("O que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip\n 3 - tornar-se patrocinador");
+            //System.out.println("4 - entrevista de emprego");
+            System.out.println("4 - apagar conta \n5 - voltar");
+            escolha = myObj.nextInt();
+
+            if(escolha == 1){
+
+                saldo_atual = publico.ConsultarSaldo(NomeDeUsuario);
+                System.out.println("Seu saldo atual e: R$ " + saldo_atual);
+
+            }else if(escolha == 2){
+
+                //return true;      //se vip for uma classe diferente.. precisa dessa linha
+            }else if(escolha == 3){
+
+                return true;
+            }else if(escolha == 4){
+
+                return true;
+            }else if(escolha == 5) return false;
+            
+
+
+
+
+
+        }
+
+        myObj.close();
+
         return false;
     }
 
-
-
-
-    
 }
