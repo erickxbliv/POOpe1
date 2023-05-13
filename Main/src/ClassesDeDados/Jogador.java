@@ -1,17 +1,10 @@
 package ClassesDeDados;
 
-public class Jogador extends Pessoas{
+public class Jogador extends Pessoas implements Comparable<Jogador>{//para usar o método sort do
+    //arraylist é necessário usar uma interface comparable
 
     int personalidade;
     private double score;
-
-
-
-
-
-
-
-
 
     void apostar (double aposta){
          if(aposta < this.saldo){
@@ -22,8 +15,8 @@ public class Jogador extends Pessoas{
     }
 
    
-    public int getScore(){
-        int score = 0;
+    public double getScore(){
+        double score = 0;
         return score;
     }
 
@@ -52,6 +45,16 @@ public class Jogador extends Pessoas{
         //this.conta = QuantJogadores + 1;
     }
 
-
-
+    
+    public int compareTo(Jogador pJogador){//pJogador é o jogador que foi passado como parâmetro
+        if(this.score < pJogador.getScore()){
+            return -1;
+        }else if(this.score > pJogador.getScore()){
+            return 1;
+        }else{
+            return 0;
+        }
+    
+        
+    }
 }

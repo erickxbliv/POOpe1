@@ -2,21 +2,21 @@ package ClassesDeRepositorios;
 import ClassesDeDados.Jogador;
 import ClassesDeDados.Jogo;
 import java.util.ArrayList;
+import java.util.Collections;
+import java.util.Arrays;
+
 
 public class RepositorioJogador {
 
-    private ArrayList<Jogador> apostadores;
+    private ArrayList<Jogador> apostadores; //Arraylist de jogadores
 
 
     public void InicializarMeusJogadores(){
 
-        this.apostadores = new ArrayList<Jogador>();
+        this.apostadores = new ArrayList<Jogador>(); //instanciando arraylist de jogadores  -> apostadores
         preencher_teste(apostadores);
 
     }
-
-
-
 
     public boolean criar_Jogador(String NomeDeUsuario, int conta){
 
@@ -39,8 +39,6 @@ public class RepositorioJogador {
         return false;
         
     }
-
-
 
     protected void preencher_teste(ArrayList<Jogador> populacao){
 
@@ -107,15 +105,10 @@ public class RepositorioJogador {
         usuario = BuscarEsteJogador(NomeDeUsuario);
 
         double montante = Arcade.Desktop(escolha,aposta);
-        
-        
-
-
-
-
 
     }
 
+    public ArrayList<Jogador> rank = new ArrayList<Jogador>();
 
 
 

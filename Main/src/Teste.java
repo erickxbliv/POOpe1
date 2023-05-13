@@ -11,7 +11,7 @@ public class Teste{         //classe de teste (Main)
     public static void main(String[] args){
 
         //int data de hj
-        RepositorioJogador publico = new RepositorioJogador();
+        RepositorioJogador publico = new RepositorioJogador(); //intanciando um repositório jogadores
         publico.InicializarMeusJogadores();
         Jogo Arcade = new Jogo();
         Arcade.inicializar();

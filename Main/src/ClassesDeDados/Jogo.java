@@ -1,6 +1,8 @@
 package ClassesDeDados;
 import java.util.Random;
 import java.util.ArrayList;
+import java.util.Collections;
+import ClassesDeRepositorios.RepositorioJogador;
 
 public class Jogo {
     //não pode ter um score negativo, o mínimo é 0;
@@ -55,9 +57,7 @@ public class Jogo {
 
         }
         
-
-
-
+        Collections.sort(rank);
         return;
     }
 
