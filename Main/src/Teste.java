@@ -1,3 +1,10 @@
+//bug no login, contas criadas e nomes com espaco
+//voltar da desktop ta com 1 a mais
+//utilize a virgula para centavos
+//perder e impossivel cacaniquel
+//nao posso fechar o scanner
+
+
 import ClassesDeDados.Jogador;
 //import ClassesDeDados.Funcionario;
 import ClassesDeDados.Jogo;
@@ -51,7 +58,7 @@ public class Teste{         //classe de teste (Main)
 
                 System.out.print("Vamos criar sua conta! Qual vai ser o seu apelido aqui no Cassino? "); 
                 do{ NomeDeUsuario = myObj.nextLine();
-                }while(ContaExisteQualFuncao(NomeDeUsuario,publico) == -1);
+                }while(ContaExisteQualFuncao(NomeDeUsuario,publico) != -1);
 
                 //if(resposta.equals("sim")) carteiras.criar_Funcionario(NomeDeUsuario,conta); else 
                 publico.criar_Jogador(NomeDeUsuario,conta);
@@ -64,7 +71,7 @@ public class Teste{         //classe de teste (Main)
 
 
         System.out.println("Bem vindo!");
-        myObj.close();
+        //myObj.close();
 
         
 
@@ -74,7 +81,7 @@ public class Teste{         //classe de teste (Main)
         boolean sair = false;
 
         while(!sair){       //pra caso uma pessoa troque de funcao
-            System.out.println("TESTEEEEEEEEEEEE");
+            //System.out.println("TESTEEEEEEEEEEEE");
             funcao = ContaExisteQualFuncao(NomeDeUsuario,publico);
 
             if(funcao == 1) sair = ElevadorClientes(NomeDeUsuario,publico,Arcade);
@@ -126,7 +133,7 @@ public class Teste{         //classe de teste (Main)
 
         while(!sair){
 
-            System.out.println("O que voce deseja " + NomeDeUsuario + "? \n1 - Jogar \n2 - configuracoes \n3 - fechar \n");
+            System.out.println("\nO que voce deseja " + NomeDeUsuario + "? \n1 - Jogar \n2 - configuracoes \n3 - fechar \n");
             escolha = myObj.nextLine();
 
             if(escolha.equals("1")){
@@ -145,7 +152,7 @@ public class Teste{         //classe de teste (Main)
 
         }
 
-        myObj.close();
+        //myObj.close();
         return true;
     }
 
@@ -180,7 +187,7 @@ public class Teste{         //classe de teste (Main)
 
         while(!sucesso){
 
-            System.out.println("De qual jogo voce deseja participar?");
+            System.out.println("\nDe qual jogo voce deseja participar?");
             total = Arcade.mostrar_biblioteca();
             System.out.println((total+1) + " - Voltar\n");
             escolha = myObj.nextInt();
@@ -189,7 +196,7 @@ public class Teste{         //classe de teste (Main)
             else{
                 
                 do{
-                    System.out.print("\nQuanto vc deseja apostar em Reais? Troque ',' por '.' ok? R$ ");
+                    System.out.print("\nQuanto vc deseja apostar em Reais? Utilize a ',' ok? R$ ");
                     aposta = myObj.nextDouble();
                 }while(!publico.PodeArcar(NomeDeUsuario,aposta));
                 publico.IniciarJogo(NomeDeUsuario,Arcade,escolha,aposta);
@@ -197,7 +204,7 @@ public class Teste{         //classe de teste (Main)
             }
         }
 
-        myObj.close();
+        //myObj.close();
         return;
     }
 
@@ -212,7 +219,7 @@ public class Teste{         //classe de teste (Main)
 
         while(sempre){
 
-            System.out.println("O que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip\n 3 - tornar-se patrocinador");
+            System.out.println("\nO que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip \n3 - tornar-se patrocinador");
             //System.out.println("4 - entrevista de emprego");
             System.out.println("4 - apagar conta \n5 - voltar");
             escolha = myObj.nextInt();
@@ -240,7 +247,7 @@ public class Teste{         //classe de teste (Main)
 
         }
 
-        myObj.close();
+        //myObj.close();
 
         return false;
     }

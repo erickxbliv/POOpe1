@@ -33,6 +33,7 @@ public class RepositorioJogador {
         novo.nome = NomeDeUsuario;
         novo.id = this.apostadores.size();
         novo.tipo = "Jogador";
+        novo.funcao = 1;
 
         novo.setConta(conta);
         this.apostadores.add(novo);
@@ -48,10 +49,10 @@ public class RepositorioJogador {
         Jogador cliente2 = new Jogador();
         Jogador cliente3 = new Jogador();
         
-        cliente.nome = "Erick de Brito";
+        cliente.nome = "erick";
         cliente.id = 1;
         //cliente.tipo = "Jogador";
-        cliente2.funcao = 1;
+        cliente.funcao = 1;
         cliente.setConta(120445);
         //cliente.transacao(537.5);
 
@@ -67,10 +68,11 @@ public class RepositorioJogador {
         populacao.add(cliente2);
 
 
-        cliente3.nome = "a";
+        cliente3.nome = "mari a";
         cliente3.id = 3;
         cliente3.funcao = 1;
         cliente3.setConta(639264);
+        cliente3.setSaldo(10000.0);
 
         populacao.add(cliente3);
 
