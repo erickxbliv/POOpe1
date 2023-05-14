@@ -1,26 +1,25 @@
-//bug no login, contas criadas e nomes com espaco
-//voltar da desktop ta com 1 a mais
-//utilize a virgula para centavos
+package br.edu.ufca.ClassesDeTestes;
+//bug no login, contas criadas e nomes com espaco       //nao deu mais esse bug.. mas nao corrigi
 //perder e impossivel cacaniquel
 //nao posso fechar o scanner
-
-
-import ClassesDeDados.Jogador;
-//import ClassesDeDados.Funcionario;
-import ClassesDeDados.Jogo;
-import ClassesDeRepositorios.RepositorioJogador;
-//import ClassesDeRepositorios.RepositorioFuncionario;
+//set nome
+//fazer roleta
+//polimorfismo, vip subclasse
+//deletar conta
 
 import java.util.Scanner;
+
+import br.edu.ufca.ClassesDeRepositorios.RepositorioJogador;
+
 import java.util.ArrayList;
 
-public class Teste{         //classe de teste (Main)
+public class TesteSistema{         //classe de teste (Main)
     public static void main(String[] args){
 
         //int data de hj
         RepositorioJogador publico = new RepositorioJogador(); //intanciando um repositório jogadores
         publico.InicializarMeusJogadores();
-        Jogo Arcade = new Jogo();
+        TesteJogo Arcade = new TesteJogo();
         Arcade.inicializar();
         //RepositorioFuncionario carteiras = new RepositorioFuncionario();
         //carteiras.InicializarMeusFuncionarios();
@@ -90,7 +89,6 @@ public class Teste{         //classe de teste (Main)
             else return;
         }
         
-
         
         
 
@@ -125,7 +123,7 @@ public class Teste{         //classe de teste (Main)
 
 
 
-    private static boolean ElevadorClientes(String NomeDeUsuario, RepositorioJogador publico, Jogo Arcade){
+    private static boolean ElevadorClientes(String NomeDeUsuario, RepositorioJogador publico, TesteJogo Arcade){
 
         boolean sair = false;
         String escolha;
@@ -175,10 +173,10 @@ public class Teste{         //classe de teste (Main)
         return true;
     }
 
-    private static void Jogar(String NomeDeUsuario, RepositorioJogador publico, Jogo Arcade){
+    private static void Jogar(String NomeDeUsuario, RepositorioJogador publico, TesteJogo Arcade){
 
         Scanner myObj = new Scanner(System.in);
-        Jogo arcade = new Jogo();
+        TesteJogo arcade = new TesteJogo();
 
         int escolha;
         boolean sucesso = false;
@@ -196,7 +194,7 @@ public class Teste{         //classe de teste (Main)
             else{
                 
                 do{
-                    System.out.print("\nQuanto vc deseja apostar em Reais? Utilize a ',' ok? R$ ");
+                    System.out.print("\nQuanto vc deseja apostar em Reais? Utilize ',' para centavos, ok? R$ ");
                     aposta = myObj.nextDouble();
                 }while(!publico.PodeArcar(NomeDeUsuario,aposta));
                 publico.IniciarJogo(NomeDeUsuario,Arcade,escolha,aposta);

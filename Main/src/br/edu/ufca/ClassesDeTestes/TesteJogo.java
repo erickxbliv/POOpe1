@@ -1,10 +1,10 @@
-package ClassesDeDados;             //mas..... Jogo e uma classe de funcoes.. n de dados
+package br.edu.ufca.ClassesDeTestes;            //mas..... Jogo e uma classe de funcoes.. n de dados
 import java.util.Random;
 import java.util.ArrayList;
 import java.util.Collections;
 //import ClassesDeRepositorios.RepositorioJogador;
 
-public class Jogo {
+public class TesteJogo {
     //não pode ter um score negativo, o mínimo é 0;
 
     private ArrayList<String> lista = new ArrayList<>();
@@ -31,14 +31,14 @@ public class Jogo {
             System.out.println((i+1) + " - " + this.lista.get(i));
         }
         
-        return tam + 1;
+        return tam;
     }
 
 
     public double Desktop(int escolha, double aposta){
 
         String NomeDoJogo = this.lista.get(escolha - 1);
-        int multiplicador;
+        double multiplicador;
         double montante;
         if(NomeDoJogo.equals("Caca Niquel")){
 
@@ -58,7 +58,7 @@ public class Jogo {
     }
     
 
-    public int CacaNiquel(){
+    public double CacaNiquel(){
 
         Random gerador = new Random(); 
         ArrayList<Integer> maquina = new ArrayList<>();
@@ -70,55 +70,16 @@ public class Jogo {
         
         if((maquina.get(0) == maquina.get(1)) && (maquina.get(1) == maquina.get(2))){
             System.out.println("Todos os numeros iguais! Bonus x9!");
-            return 9;
+            return 9.0;
         }else if((maquina.get(0) == maquina.get(1)) || (maquina.get(1) == maquina.get(2))
         || maquina.get(0) == maquina.get(2)){
-            System.out.println("Dois valores iguais! Bonus x2!");
-            return 2;
+            System.out.println("Dois valores iguais! Lucro de 5%!");
+            return 1.05;
         }else{
-            System.out.println("Infelizmente vc teve azar!");
-            return -1;
+            System.out.println("Infelizmente vc teve azar, perdeu!");
+            return -1.0;
         } 
         //Collections.sort(rank);
     }
 
-   
-   
-
-  
-    
 }
-
-
-/*
-
-package ClassesDeDados;
-import java.util.Random;
-import java.util.ArrayList;
-
-//APAGUEI O CODIGO ANTIGO COM VETOR MAS ERICK PODE PEGAR NOS CÓDIGOS ANTIGOS
-public class Roleta extends Jogo { //mudar pra CacaNiquel
-
-   
-    void roleta(int conta,double aposta){
-        Random gerador = new Random(); 
-        ArrayList<Integer> tela = new ArrayList<>();
-        int tamTela = 3;
-        for(int i=0; i < tamTela; i++){
-            tela.add(gerador.nextInt(10));
-        //tela.add(7);
-      }
-      
-      int a = tela.get(0);
-      int b = tela.get(1);
-      int c = tela.get(2);
-      if((a == b) && (b== c)){ // PRECISA DESSES PARENTESES
-          System.out.println("PARABENS, VOCÊ GANHOU");
-          
-        }//PODEMOS COLOCAR PARA SE CONSEGUIR ALGUMA OUTRA SEQUENCIA GANHA OUTRO VALOR MENOR, TIPO SE CAIR SÓ NUMEROS PARES
-        
-    }
-    
-}
-
- */

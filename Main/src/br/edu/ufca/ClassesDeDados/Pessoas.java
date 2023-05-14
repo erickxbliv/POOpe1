@@ -1,4 +1,4 @@
-package ClassesDeDados;
+package br.edu.ufca.ClassesDeDados;
 import java.util.Random;
 
 public abstract class Pessoas {
@@ -11,11 +11,17 @@ public abstract class Pessoas {
     protected double saldo = 0.0;   //o dinheiro disponivel na conta
 
     public int data_criacao;
-    public String tipo;       //sua funcao no sistema   (OBSOLETO POR 'FUNCAO')
 
-    
+    public void setId(int id){
+        this.id = id;
+    }
+
     public int getFuncao(){
         return this.funcao;
+    }
+
+    public void setFuncao(int funcao){
+        this.funcao = funcao;
     }
 
     public double getSaldo(){
@@ -32,7 +38,6 @@ public abstract class Pessoas {
         Random gerador = new Random(); 
         double saldo = gerador.nextInt(conta);      //melhorar isso.. como fazer pra decidir o dinheiro na conta da pessoa?
         setSaldo(saldo);
-        
     }
 
     public String getNome(){
@@ -51,16 +56,8 @@ public abstract class Pessoas {
 
     }
 
-    void creditar(int conta, int valor){
-        if(valor>0){
-            saldo = saldo + valor;
-        }
-    }
 
-
-    public void transacao(double montante){     
-        this.saldo += montante;
-    }
+    
     
 
 }

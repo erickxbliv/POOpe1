@@ -1,6 +1,7 @@
-package ClassesDeRepositorios;
-import ClassesDeDados.Jogador;
-import ClassesDeDados.Jogo;
+package br.edu.ufca.ClassesDeRepositorios;
+import br.edu.ufca.ClassesDeDados.Jogador;
+import br.edu.ufca.ClassesDeTestes.TesteJogo;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Arrays;
@@ -30,17 +31,15 @@ public class RepositorioJogador {
         }
 
         novo = new Jogador();
-        novo.nome = NomeDeUsuario;
-        novo.id = this.apostadores.size();
-        novo.tipo = "Jogador";
-        novo.funcao = 1;
+        novo.setNome(NomeDeUsuario);
+        novo.setId(this.apostadores.size());
+        novo.setFuncao(1);
 
         novo.setConta(conta);
         this.apostadores.add(novo);
         //novo.data_criacao = ;
 
         return false;
-        
     }
 
     protected void preencher_teste(ArrayList<Jogador> populacao){
@@ -49,7 +48,7 @@ public class RepositorioJogador {
         Jogador cliente2 = new Jogador();
         Jogador cliente3 = new Jogador();
         
-        cliente.nome = "erick";
+        cliente.nome = "Erick";
         cliente.id = 1;
         //cliente.tipo = "Jogador";
         cliente.funcao = 1;
@@ -58,7 +57,7 @@ public class RepositorioJogador {
 
         populacao.add(cliente);
 
-        cliente2.nome = "Andre Castro";
+        cliente2.nome = "Andre";
         cliente2.id = 2;
         //cliente2.tipo = "Jogador";
         cliente2.funcao = 1;
@@ -67,15 +66,13 @@ public class RepositorioJogador {
 
         populacao.add(cliente2);
 
-
-        cliente3.nome = "mari a";
+        cliente3.nome = "a";
         cliente3.id = 3;
         cliente3.funcao = 1;
         cliente3.setConta(639264);
         cliente3.setSaldo(10000.0);
 
         populacao.add(cliente3);
-
     }
 
 
@@ -107,12 +104,12 @@ public class RepositorioJogador {
 
         Jogador usuario = new Jogador();
         usuario = BuscarEsteJogador(NomeDeUsuario);
-
-        if(usuario.getSaldo() < aposta) return false;
-        else return true;
+        boolean pode = usuario.tem_suficiente(aposta);
+        if(!pode) System.out.println("Poxa, parece que seu saldo e insuficiente, tente novamente.\n");
+        return pode;
     }
 
-    public void IniciarJogo(String NomeDeUsuario, Jogo Arcade, int escolha, double aposta){
+    public void IniciarJogo(String NomeDeUsuario, TesteJogo Arcade, int escolha, double aposta){
 
         Jogador usuario = new Jogador();
         usuario = BuscarEsteJogador(NomeDeUsuario);

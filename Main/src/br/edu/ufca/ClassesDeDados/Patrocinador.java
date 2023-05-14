@@ -1,4 +1,4 @@
-package ClassesDeDados;
+package br.edu.ufca.ClassesDeDados;
 
 public class Patrocinador extends Jogador {
 
