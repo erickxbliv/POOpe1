@@ -1,16 +1,14 @@
-package br.edu.ufca.ClassesDeTestes;
 //bug no login, contas criadas e nomes com espaco       //nao deu mais esse bug.. mas nao corrigi
-//perder e impossivel cacaniquel
 //nao posso fechar o scanner
-//set nome
+
 //fazer roleta
 //polimorfismo, vip subclasse
-//deletar conta
+//deletar conta, ver ranking, ver seu ranking
 
-import java.util.Scanner;
-
+package br.edu.ufca.ClassesDeTestes;
 import br.edu.ufca.ClassesDeRepositorios.RepositorioJogador;
 
+import java.util.Scanner;
 import java.util.ArrayList;
 
 public class TesteSistema{         //classe de teste (Main)
@@ -131,7 +129,7 @@ public class TesteSistema{         //classe de teste (Main)
 
         while(!sair){
 
-            System.out.println("\nO que voce deseja " + NomeDeUsuario + "? \n1 - Jogar \n2 - configuracoes \n3 - fechar \n");
+            System.out.println("\nO que voce deseja " + NomeDeUsuario + "? \n1 - Jogar \n2 - configuracoes \n3 - fechar");
             escolha = myObj.nextLine();
 
             if(escolha.equals("1")){
@@ -219,7 +217,7 @@ public class TesteSistema{         //classe de teste (Main)
 
             System.out.println("\nO que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip \n3 - tornar-se patrocinador");
             //System.out.println("4 - entrevista de emprego");
-            System.out.println("4 - apagar conta \n5 - voltar");
+            System.out.println("4 - apagar conta \n5 - seu ranking \n6 - voltar");      //ver top 5
             escolha = myObj.nextInt();
 
             if(escolha == 1){
@@ -236,12 +234,10 @@ public class TesteSistema{         //classe de teste (Main)
             }else if(escolha == 4){
 
                 return true;
-            }else if(escolha == 5) return false;
-            
+            }else if(escolha == 5){
 
-
-
-
+                
+            }else if(escolha == 6) return false;
 
         }
 

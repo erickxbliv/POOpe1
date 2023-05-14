@@ -5,8 +5,10 @@ package br.edu.ufca.ClassesDeDados;
 
 public class Jogador extends Pessoas{
     
-    int personalidade;
+    public int personalidade;
     private double score;
+    private int ranking;        //o id so que do array de ranking
+    private int vip = 0;
 
 
     public void transacao(double montante){     

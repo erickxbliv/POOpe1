@@ -47,32 +47,41 @@ public class RepositorioJogador {
         Jogador cliente = new Jogador();
         Jogador cliente2 = new Jogador();
         Jogador cliente3 = new Jogador();
-        
-        cliente.nome = "Erick";
-        cliente.id = 1;
-        //cliente.tipo = "Jogador";
-        cliente.funcao = 1;
-        cliente.setConta(120445);
-        //cliente.transacao(537.5);
+        Jogador cliente4 = new Jogador();
 
+        String nome = "erick";
+        
+        cliente.setNome(nome);
+        cliente.setId(1);
+        cliente.setFuncao(1);
+        cliente.setConta(563826);
         populacao.add(cliente);
 
-        cliente2.nome = "Andre";
-        cliente2.id = 2;
-        //cliente2.tipo = "Jogador";
-        cliente2.funcao = 1;
-        cliente2.setConta(563282);
-        //cliente2.transacao(1343.25);
+        nome = "andre";
 
+        cliente2.setNome(nome);
+        cliente2.setId(2);
+        cliente2.setFuncao(1);
+        cliente2.setConta(519460);
         populacao.add(cliente2);
 
-        cliente3.nome = "a";
-        cliente3.id = 3;
-        cliente3.funcao = 1;
-        cliente3.setConta(639264);
-        cliente3.setSaldo(10000.0);
+        nome = "a";
 
+        cliente3.setNome(nome);
+        cliente3.setId(3);
+        cliente3.setFuncao(1);
+        cliente3.setConta(671945);
+        cliente3.setSaldo(10000.0);
         populacao.add(cliente3);
+
+        nome = "1";
+
+        cliente4.setNome(nome);
+        cliente4.setId(4);
+        cliente4.setFuncao(1);
+        cliente4.setConta(678145);
+        cliente4.setSaldo(100000000.12345);
+        populacao.add(cliente4);
     }
 
 
@@ -82,7 +91,7 @@ public class RepositorioJogador {
         tam = this.apostadores.size();
 
         for(int i = 0; i < tam; i++){
-            if(this.apostadores.get(i).nome.equals(NomeDeUsuario)) return this.apostadores.get(i);
+            if((this.apostadores.get(i).getNome()).equals(NomeDeUsuario)) return this.apostadores.get(i);
         }
         return null;
     }
@@ -94,13 +103,18 @@ public class RepositorioJogador {
         int tam;
         tam = this.apostadores.size();
         for(int i = 0; i < tam; i++){
-            if(this.apostadores.get(i).nome.equals(NomeDeUsuario)) return this.apostadores.get(i).funcao;
+            if((this.apostadores.get(i).getNome()).equals(NomeDeUsuario)) return this.apostadores.get(i).funcao;
         }
         return -1;
     }
 
     
     public boolean PodeArcar(String NomeDeUsuario, double aposta){
+
+        if(aposta <= 0.0){
+            System.out.println("Valor inserido e invalido, tente novamente.\n");
+            return false;
+        }
 
         Jogador usuario = new Jogador();
         usuario = BuscarEsteJogador(NomeDeUsuario);
@@ -148,7 +162,6 @@ public class RepositorioJogador {
        ois.close();
        return iHandler;
     }
-
 
     try{
         FileOutputStream fileOutputStream = new FileOutputStream("Dog.ser");

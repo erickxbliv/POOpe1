@@ -1,3 +1,5 @@
+/* 
+
 package br.edu.ufca.ClassesDeDados;
 
 public class Patrocinador extends Jogador {
@@ -6,6 +8,6 @@ public class Patrocinador extends Jogador {
         //debitar(jogador,valor);
     }
     
-    
-    
 }
+
+*/

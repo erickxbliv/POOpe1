@@ -1,18 +1,17 @@
-package br.edu.ufca.ClassesDeTestes;            //mas..... Jogo e uma classe de funcoes.. n de dados
+package br.edu.ufca.ClassesDeTestes;
 import java.util.Random;
 import java.util.ArrayList;
-import java.util.Collections;
-//import ClassesDeRepositorios.RepositorioJogador;
+import java.util.Scanner;
+
+
+import java.util.Collections;       //?
+
 
 public class TesteJogo {
     //não pode ter um score negativo, o mínimo é 0;
 
     private ArrayList<String> lista = new ArrayList<>();
-    //protected int MaxJogadores;
-    //protected ArrayList<String> ApostasDisponiveis;
-    //protected double TotalApostado;
     
-
     public void inicializar(){
 
         this.lista.add("Caca Niquel");
@@ -48,13 +47,56 @@ public class TesteJogo {
             
         }else if(NomeDoJogo.equals("Roleta")){
 
+            Scanner myObj = new Scanner(System.in);
+            int selecao;
 
+            do{
+                System.out.println("Em que cor vc vai apostar? \n1 - vermelho \n2 - preto \n3 - branco \n4 - cancelar");
+                selecao = myObj.nextInt();
+            }while(selecao < 1 || selecao > 4);
+            //}while(false);
+
+            if(selecao == 4) return 0.0;
+            multiplicador = Roleta(selecao);
+            montante = multiplicador * aposta;
+            return montante;
 
         }
 
-        
-
         return 0.00;
+    }
+
+
+    public double Roleta(int selecao){
+
+        ArrayList<String> cores = new ArrayList<>();
+        cores.add("Vermelho");
+        cores.add("Preto");
+        cores.add("Branco");
+
+        Random gerador = new Random();
+        int resultado = gerador.nextInt(101);   //de 0 a 100
+        int cor;
+
+        if(resultado == 50) cor = 3;
+        else if((resultado % 2) == 0) cor = 1;
+        else cor = 2;
+
+        System.out.println("O resultado foi " + resultado + " " + cores.get(cor-1));
+
+        if(selecao == cor){
+
+            if(cor == 3){
+                System.out.println("Parabens! sua chance era de 1%, entao Bonus x10!");
+                return 10.0;
+            }else{
+                System.out.println("A probabilidade era de 1/2, e voce ganhou! lucro de 80%");
+                return 0.80;
+            }
+        }
+
+        System.out.println("Voce perdeu.. mais sorte na proxima!");
+        return -1.0;
     }
     
 
@@ -64,7 +106,7 @@ public class TesteJogo {
         ArrayList<Integer> maquina = new ArrayList<>();
         int tamTela = 3;
         for(int i = 0; i < tamTela; i++){
-            maquina.add(gerador.nextInt(3));
+            maquina.add((gerador.nextInt(3) + 1));
         }
         System.out.println("O resultado foi: " + maquina.get(0) + maquina.get(1) + maquina.get(2));
         
@@ -74,12 +116,16 @@ public class TesteJogo {
         }else if((maquina.get(0) == maquina.get(1)) || (maquina.get(1) == maquina.get(2))
         || maquina.get(0) == maquina.get(2)){
             System.out.println("Dois valores iguais! Lucro de 5%!");
-            return 1.05;
+            return 0.05;
         }else{
             System.out.println("Infelizmente vc teve azar, perdeu!");
             return -1.0;
         } 
         //Collections.sort(rank);
     }
+
+
+
+    
 
 }
