@@ -215,7 +215,7 @@ public class TesteSistema{         //classe de teste (Main)
 
         while(sempre){
 
-            System.out.println("\nO que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip \n3 - tornar-se patrocinador");
+            System.out.println("\nO que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip \n3 - Patrocinar um jogador");
             //System.out.println("4 - entrevista de emprego");
             System.out.println("4 - apagar conta \n5 - seu ranking \n6 - voltar");      //ver top 5
             escolha = myObj.nextInt();
@@ -229,6 +229,16 @@ public class TesteSistema{         //classe de teste (Main)
 
                 //return true;      //se vip for uma classe diferente.. precisa dessa linha
             }else if(escolha == 3){
+                Scanner jog = new Scanner(System.in);
+                System.out.printf("Digite o nome do jogador: \n");
+                String nomeJogador = jog.nextLine();
+
+                Scanner valInv = new Scanner(System.in);
+                System.out.printf("Digite o valor a investir: \n");
+                double valorInvestir = valInv.nextDouble();
+
+                publico.receberPatrocinio(nomeJogador,valorInvestir);
+
 
                 return true;
             }else if(escolha == 4){

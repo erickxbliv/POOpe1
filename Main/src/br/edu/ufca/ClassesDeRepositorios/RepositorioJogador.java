@@ -96,6 +96,11 @@ public class RepositorioJogador {
         return null;
     }
 
+    public Jogador receberPatrocinio(String NomeDeUsuario, double valorInvestir){
+        Jogador jogadorPatrocinar = new Jogador();
+        BuscarEsteJogador(NomeDeUsuario);
+    }
+
 
 
     public int JogadorExiste(String NomeDeUsuario){
@@ -142,6 +147,7 @@ public class RepositorioJogador {
         if(usuario != null) saldo = usuario.getSaldo();
         return saldo;
     }
+
 
 
 
