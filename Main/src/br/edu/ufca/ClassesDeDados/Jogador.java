@@ -3,12 +3,12 @@ package br.edu.ufca.ClassesDeDados;
 //public class Jogador extends Pessoas implements Comparable<Jogador>{//para usar o método sort do
     //arraylist é necessário usar uma interface comparable
 
-public class Jogador extends Pessoas implements Comparable<Jogador>{
+public class Jogador extends Pessoas{
     
     public int personalidade;
-    private double score;
-    private int ranking;        //o id so que do array de ranking
-    private int vip = 0;
+    protected double score;
+    protected int ranking;        //o id so que do array de ranking
+    protected boolean vip = false;
 
     public void transacao(double montante){     
         this.saldo += montante;
@@ -34,9 +34,17 @@ public class Jogador extends Pessoas implements Comparable<Jogador>{
         this.score = score;
     }
 
+    public boolean getVip(){
+        return this.vip;
+    }
+
+    public void propina(double pacote){
+        return;
+    }
+
     //metodos gets e sets para pegar e dar valores a variaveis "private"
     
-/*
+    /*
     @Override
     public int compareTo(Jogador pJogador){
         return (pJogador.getScore() - this.score)

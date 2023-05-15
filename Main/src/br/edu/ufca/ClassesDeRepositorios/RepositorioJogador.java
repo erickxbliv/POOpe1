@@ -1,5 +1,6 @@
 package br.edu.ufca.ClassesDeRepositorios;
 import br.edu.ufca.ClassesDeDados.Jogador;
+import br.edu.ufca.ClassesDeDados.JogadorVip;
 import br.edu.ufca.ClassesDeTestes.TesteJogo;
 
 import java.util.ArrayList;
@@ -94,9 +95,17 @@ public class RepositorioJogador {
         return null;
     }
 
-    public void patrocinarSegundo(String NomeDeUsuario,String NomeDeUsuario2, double valorInvestir){
-        NomeDeUsuario
-        BuscarEsteJogador(NomeDeUsuario);
+    public void XpatrocinarY(String X,String Y, double investimento){
+
+        Jogador enviar = new Jogador();
+        enviar = BuscarEsteJogador(X);
+        enviar.transacao((investimento * -1));
+
+        Jogador receber = new Jogador();
+        receber = BuscarEsteJogador(Y);
+        receber.transacao(investimento);
+
+        return;
     }
 
 
@@ -146,6 +155,54 @@ public class RepositorioJogador {
         return saldo;
     }
 
+    public boolean EVip(String NomeDeUsuario){
+
+        Jogador usuario;
+        usuario = BuscarEsteJogador(NomeDeUsuario);
+
+        boolean E = usuario.getVip();
+        return E;
+    }
+
+    public void AtualizarMatricula(String NomeDeUsuario){
+
+        Jogador usuario;
+        usuario = BuscarEsteJogador(NomeDeUsuario);
+        Jogador novo = new JogadorVip();
+
+        novo.setNome(usuario.getNome());
+        novo.setFuncao(1);
+        novo.setConta(usuario.getConta());
+        Deletar(NomeDeUsuario);
+
+        novo.setId(this.apostadores.size());
+        this.apostadores.add(novo);
+    }
+
+
+    public void Deletar(String NomeDeusuario){
+
+        Jogador usuario = BuscarEsteJogador(NomeDeusuario);
+        int indice = usuario.getId();
+
+        this.apostadores.remove(indice-1);
+        int tam = this.apostadores.size();
+
+        for(int i = indice; i < tam; i++){
+            (this.apostadores.get(i)).setId(i);
+        }
+
+    }
+
+
+    public void DarPropina(String NomeDeUsuario, double propina){
+
+        Jogador usuario = BuscarEsteJogador(NomeDeUsuario);
+
+        if(!EVip(NomeDeUsuario)) return;
+        usuario.propina(propina);
+        return;
+    }
 
 
 

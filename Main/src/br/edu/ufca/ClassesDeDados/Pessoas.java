@@ -16,6 +16,10 @@ public abstract class Pessoas implements Comparable<Jogador> {
         this.id = id;
     }
 
+    public int getId(){
+        return this.id;
+    }
+
     public int getFuncao(){
         return this.funcao;
     }
@@ -38,6 +42,10 @@ public abstract class Pessoas implements Comparable<Jogador> {
         Random gerador = new Random(); 
         double saldo = gerador.nextInt(conta);      //melhorar isso.. como fazer pra decidir o dinheiro na conta da pessoa?
         setSaldo(saldo);
+    }
+
+    public int getConta(){
+        return this.conta;
     }
 
     public String getNome(){

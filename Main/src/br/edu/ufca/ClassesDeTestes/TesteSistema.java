@@ -1,11 +1,6 @@
 //bug no login, contas criadas e nomes com espaco       //nao deu mais esse bug.. mas nao corrigi
 //nao posso fechar o scanner
 
-//polimorfismo, vip subclasse
-//deletar conta, ver ranking, ver seu ranking
-
-
-
 package br.edu.ufca.ClassesDeTestes;
 import br.edu.ufca.ClassesDeDados.Jogador;
 import br.edu.ufca.ClassesDeRepositorios.RepositorioJogador;
@@ -35,7 +30,7 @@ public class TesteSistema{         //classe de teste (Main)
 
         while(!sucesso){
 
-            System.out.println("Olá, parece que você não se identificou! O que você deseja? \n1- login \n2- cadastrar novo \n3 - fechar");
+            System.out.println("Olá, parece que você não se identificou! O que você deseja? \n1 - login \n2 - cadastrar novo \n3 - fechar");
             String escolha = myObj.nextLine();
             
             if(escolha.equals("1")){
@@ -219,7 +214,7 @@ public class TesteSistema{         //classe de teste (Main)
 
             System.out.println("\nO que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip \n3 - Patrocinar um jogador");
             //System.out.println("4 - entrevista de emprego");
-            System.out.println("4 - apagar conta \n 5 - voltar");      //ver top 5
+            System.out.println("4 - apagar conta \n5 - voltar");      //ver top 5
             escolha = myObj.nextInt();
 
             if(escolha == 1){
@@ -229,31 +224,40 @@ public class TesteSistema{         //classe de teste (Main)
 
             }else if(escolha == 2){
 
-                //return true;      //se vip for uma classe diferente.. precisa dessa linha
+                boolean vip = publico.EVip(NomeDeUsuario);
+                double matricula;
+                if(!vip) publico.AtualizarMatricula(NomeDeUsuario);
+
+                do{
+                    System.out.print("\nVoce lucra 1% a mais a cada 1000 Reais pagos, quanto deseja pagar? Utilize ',' para centavos, ok? R$ ");
+                    matricula = myObj.nextDouble();
+                }while(!publico.PodeArcar(NomeDeUsuario,matricula));
+                
+                publico.DarPropina(NomeDeUsuario,matricula);
+                return true;      //se vip for uma classe diferente.. precisa dessa linha
             }else if(escolha == 3){
-                Scanner jog = new Scanner(System.in);
-                System.out.printf("Digite o nome do jogador que vai receber o investimento: \n");
-                String nomeJogador = jog.nextLine();
-                Jogador usuario = new jogador;
-                usuario = BuscarEsteJogador(nomeJogador);
-                usuario.getSaldo() = usuario.getSaldo() - 
-                Scanner valInv = new Scanner(System.in);
-                System.out.printf("Digite o valor a investir: \n");
-                double valorInvestir = valInv.nextDouble();
-                void patrocinarSegundo(NomeDeUsuario,nomeJogador,valorInvestir);
+                
+                String destinatario;
+                double investimento;
 
-                //publico.receberPatrocinio(nomeJogador,valorInvestir);
+                do{
+                    System.out.print("Qual o nome da pessoa que vai receber seu patrocinio? ");
+                    destinatario = myObj.nextLine();
+                }while(ContaExisteQualFuncao(NomeDeUsuario,publico) != -1);
 
-
-                return true;
+                do{
+                    System.out.print("\nQuanto vc deseja investir em " + destinatario + "? Utilize ',' para centavos, ok? R$ ");
+                    investimento = myObj.nextDouble();
+                }while(!publico.PodeArcar(NomeDeUsuario,investimento));
+                publico.XpatrocinarY(NomeDeUsuario,destinatario,investimento);
+            
             }else if(escolha == 4){
 
+                publico.Deletar(NomeDeUsuario);
                 return true;
             }else if(escolha == 5) return false;
 
         }
-
-        //myObj.close();
 
         return false;
     }
