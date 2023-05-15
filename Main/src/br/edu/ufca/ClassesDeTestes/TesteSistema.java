@@ -243,7 +243,7 @@ public class TesteSistema{         //classe de teste (Main)
                 do{
                     System.out.print("Qual o nome da pessoa que vai receber seu patrocinio? ");
                     destinatario = myObj.nextLine();
-                }while(ContaExisteQualFuncao(NomeDeUsuario,publico) != -1);
+                }while(ContaExisteQualFuncao(destinatario,publico) == -1);
 
                 do{
                     System.out.print("\nQuanto vc deseja investir em " + destinatario + "? Utilize ',' para centavos, ok? R$ ");

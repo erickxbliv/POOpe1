@@ -27,7 +27,7 @@ public class JogadorVip extends Jogador{
   }
 
   public void setTaxaBonus(){
-    this.TaxaBonus = (TotalPago / 1000);
+    this.TaxaBonus = (TotalPago / 100000);    //a cada 1000 reais, 1% de bonus
 	}
 
   @Override
