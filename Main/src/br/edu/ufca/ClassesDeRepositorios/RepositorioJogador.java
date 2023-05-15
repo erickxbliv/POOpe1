@@ -11,8 +11,6 @@ public class RepositorioJogador {
 
     private ArrayList<Jogador> apostadores; //Arraylist de jogadores
 
-    public ArrayList<Jogador> rank = new ArrayList<Jogador>();      //que isso?
-
 
     public void InicializarMeusJogadores(){
 
@@ -96,6 +94,11 @@ public class RepositorioJogador {
         return null;
     }
 
+    public void patrocinarSegundo(String NomeDeUsuario,String NomeDeUsuario2, double valorInvestir){
+        NomeDeUsuario
+        BuscarEsteJogador(NomeDeUsuario);
+    }
+
 
 
     public int JogadorExiste(String NomeDeUsuario){
@@ -142,6 +145,7 @@ public class RepositorioJogador {
         if(usuario != null) saldo = usuario.getSaldo();
         return saldo;
     }
+
 
 
 

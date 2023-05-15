@@ -43,7 +43,8 @@ public class TesteJogo {
 
             multiplicador = CacaNiquel();
             montante = multiplicador * aposta;
-            return montante;
+            return montante;                     //FAZER O SCORE RECEBER O RETURN * 500PTS2
+            
             
         }else if(NomeDoJogo.equals("Roleta")){
 
