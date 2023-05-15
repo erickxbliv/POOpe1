@@ -1,7 +1,6 @@
 //bug no login, contas criadas e nomes com espaco       //nao deu mais esse bug.. mas nao corrigi
 //nao posso fechar o scanner
 
-//fazer roleta
 //polimorfismo, vip subclasse
 //deletar conta, ver ranking, ver seu ranking
 
