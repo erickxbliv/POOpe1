@@ -6,6 +6,20 @@
     "configurations": [
         {
             "type": "java",
+            "name": "Teste",
+            "request": "launch",
+            "mainClass": "Teste",
+            "projectName": "POOpe1_9fc3ebb0"
+        },
+        {
+            "type": "java",
+            "name": "TesteSistema",
+            "request": "launch",
+            "mainClass": "br.edu.ufca.ClassesDeTestes.TesteSistema",
+            "projectName": "POOpe1_9fc3ebb0"
+        },
+        {
+            "type": "java",
             "name": "TesteSistema",
             "request": "launch",
             "mainClass": "br.edu.ufca.ClassesDeTestes.TesteSistema",

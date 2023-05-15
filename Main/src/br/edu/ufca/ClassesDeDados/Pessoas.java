@@ -1,7 +1,7 @@
 package br.edu.ufca.ClassesDeDados;
 import java.util.Random;
 
-public abstract class Pessoas {
+public abstract class Pessoas implements Comparable<Jogador> {
     
     public String nome;    //nome da pessoa
     public int id;         //seu identificador entre a populacao

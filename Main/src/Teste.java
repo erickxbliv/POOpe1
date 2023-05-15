@@ -1,26 +1,26 @@
-//bug no login, contas criadas e nomes com espaco       //nao deu mais esse bug.. mas nao corrigi
+//bug no login, contas criadas e nomes com espaco
+//voltar da desktop ta com 1 a mais
+//utilize a virgula para centavos
+//perder e impossivel cacaniquel
 //nao posso fechar o scanner
 
-//fazer roleta
-//polimorfismo, vip subclasse
-//deletar conta, ver ranking, ver seu ranking
 
-
-
-package br.edu.ufca.ClassesDeTestes;
-import br.edu.ufca.ClassesDeDados.Jogador;
-import br.edu.ufca.ClassesDeRepositorios.RepositorioJogador;
+import ClassesDeDados.Jogador;
+//import ClassesDeDados.Funcionario;
+import ClassesDeDados.Jogo;
+import ClassesDeRepositorios.RepositorioJogador;
+//import ClassesDeRepositorios.RepositorioFuncionario;
 
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class TesteSistema{         //classe de teste (Main)
+public class Teste{         //classe de teste (Main)
     public static void main(String[] args){
 
         //int data de hj
         RepositorioJogador publico = new RepositorioJogador(); //intanciando um repositório jogadores
         publico.InicializarMeusJogadores();
-        TesteJogo Arcade = new TesteJogo();
+        Jogo Arcade = new Jogo();
         Arcade.inicializar();
         //RepositorioFuncionario carteiras = new RepositorioFuncionario();
         //carteiras.InicializarMeusFuncionarios();
@@ -90,6 +90,7 @@ public class TesteSistema{         //classe de teste (Main)
             else return;
         }
         
+
         
         
 
@@ -124,7 +125,7 @@ public class TesteSistema{         //classe de teste (Main)
 
 
 
-    private static boolean ElevadorClientes(String NomeDeUsuario, RepositorioJogador publico, TesteJogo Arcade){
+    private static boolean ElevadorClientes(String NomeDeUsuario, RepositorioJogador publico, Jogo Arcade){
 
         boolean sair = false;
         String escolha;
@@ -132,7 +133,7 @@ public class TesteSistema{         //classe de teste (Main)
 
         while(!sair){
 
-            System.out.println("\nO que voce deseja " + NomeDeUsuario + "? \n1 - Jogar \n2 - configuracoes \n3 - fechar");
+            System.out.println("\nO que voce deseja " + NomeDeUsuario + "? \n1 - Jogar \n2 - configuracoes \n3 - fechar \n");
             escolha = myObj.nextLine();
 
             if(escolha.equals("1")){
@@ -174,10 +175,10 @@ public class TesteSistema{         //classe de teste (Main)
         return true;
     }
 
-    private static void Jogar(String NomeDeUsuario, RepositorioJogador publico, TesteJogo Arcade){
+    private static void Jogar(String NomeDeUsuario, RepositorioJogador publico, Jogo Arcade){
 
         Scanner myObj = new Scanner(System.in);
-        TesteJogo arcade = new TesteJogo();
+        Jogo arcade = new Jogo();
 
         int escolha;
         boolean sucesso = false;
@@ -195,7 +196,7 @@ public class TesteSistema{         //classe de teste (Main)
             else{
                 
                 do{
-                    System.out.print("\nQuanto vc deseja apostar em Reais? Utilize ',' para centavos, ok? R$ ");
+                    System.out.print("\nQuanto vc deseja apostar em Reais? Utilize a ',' ok? R$ ");
                     aposta = myObj.nextDouble();
                 }while(!publico.PodeArcar(NomeDeUsuario,aposta));
                 publico.IniciarJogo(NomeDeUsuario,Arcade,escolha,aposta);
@@ -218,9 +219,9 @@ public class TesteSistema{         //classe de teste (Main)
 
         while(sempre){
 
-            System.out.println("\nO que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip \n3 - Patrocinar um jogador");
+            System.out.println("\nO que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip \n3 - tornar-se patrocinador");
             //System.out.println("4 - entrevista de emprego");
-            System.out.println("4 - apagar conta \n 5 - voltar");      //ver top 5
+            System.out.println("4 - apagar conta \n5 - voltar");
             escolha = myObj.nextInt();
 
             if(escolha == 1){
@@ -229,28 +230,21 @@ public class TesteSistema{         //classe de teste (Main)
                 System.out.println("Seu saldo atual e: R$ " + saldo_atual);
 
             }else if(escolha == 2){
+                Jogador.setJogadorVip(true);
 
                 //return true;      //se vip for uma classe diferente.. precisa dessa linha
             }else if(escolha == 3){
-                Scanner jog = new Scanner(System.in);
-                System.out.printf("Digite o nome do jogador que vai receber o investimento: \n");
-                String nomeJogador = jog.nextLine();
-                Jogador usuario = new jogador;
-                usuario = BuscarEsteJogador(nomeJogador);
-                usuario.getSaldo() = usuario.getSaldo() - 
-                Scanner valInv = new Scanner(System.in);
-                System.out.printf("Digite o valor a investir: \n");
-                double valorInvestir = valInv.nextDouble();
-                void patrocinarSegundo(NomeDeUsuario,nomeJogador,valorInvestir);
-
-                //publico.receberPatrocinio(nomeJogador,valorInvestir);
-
 
                 return true;
             }else if(escolha == 4){
 
                 return true;
             }else if(escolha == 5) return false;
+            
+
+
+
+
 
         }
 
