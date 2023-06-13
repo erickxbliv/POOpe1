@@ -1,32 +1,30 @@
-//bug no login, contas criadas e nomes com espaco       //nao deu mais esse bug.. mas nao corrigi
-//nao posso fechar o scanner
-
 package br.edu.ufca.ClassesDeTestes;
 import br.edu.ufca.ClassesDeDados.Jogador;
-import br.edu.ufca.ClassesDeRepositorios.RepositorioJogador;
+import br.edu.ufca.ClassesDeFachada.RepositorioPessoas;
+import br.edu.ufca.ClassesDeExceções.*;
 
 import java.util.Scanner;
 import java.util.ArrayList;
 
-public class TesteSistema{         //classe de teste (Main)
+public class IUSistema{
     public static void main(String[] args){
 
-        //int data de hj
-        RepositorioJogador publico = new RepositorioJogador(); //intanciando um repositório jogadores
-        publico.InicializarMeusJogadores();
-        TesteJogo Arcade = new TesteJogo();
+        double data;
+        RepositorioPessoas publico = new RepositorioPessoas();
+        publico.InicializarMeuRegistro();
+
+        IUJogo Arcade = new IUJogo();
         Arcade.inicializar();
-        //RepositorioFuncionario carteiras = new RepositorioFuncionario();
-        //carteiras.InicializarMeusFuncionarios();
+ 
 
         
         Scanner myObj = new Scanner(System.in);
-        boolean sucesso = false;            //condicao de funcionamento da recepcao
+        boolean sucesso = false;
         
-        String NomeDeUsuario = null;        //preenchimento de dados sobre a conta
-        int funcao = -1;
+        String NomeDeUsuario = null;
         int conta;
-        //String resposta;
+        int funcao;
+        String papel = null;
 
         while(!sucesso){
 
@@ -38,79 +36,60 @@ public class TesteSistema{         //classe de teste (Main)
                 System.out.print("\nDigite seu nome: ");
                 NomeDeUsuario = myObj.nextLine();
                 funcao = ContaExisteQualFuncao(NomeDeUsuario,publico);
-                if(funcao != -1) sucesso = true;
 
             }else if(escolha.equals("2")){
 
                 System.out.print("\nPara criar sua conta, e necessario possuir uma conta bancaria. Informe seus 6 digitos a seguir: ");
-                do{
-                    conta =  myObj.nextInt();
+                do{ conta =  myObj.nextInt();
                 }while(conta < 100000 || conta > 999999);
                 String lixo = myObj.nextLine();
-                //System.out.print("Certo! Voce veio para a entrevista de emprego? Caso tenha, digite 'sim': ");
-                //resposta = myObj.nextLine();
 
                 System.out.print("Vamos criar sua conta! Qual vai ser o seu apelido aqui no Cassino? "); 
                 do{ NomeDeUsuario = myObj.nextLine();
                 }while(ContaExisteQualFuncao(NomeDeUsuario,publico) != -1);
 
-                //if(resposta.equals("sim")) carteiras.criar_Funcionario(NomeDeUsuario,conta); else 
                 publico.criar_Jogador(NomeDeUsuario,conta);
                 
-                //sucesso = true;           //n da pra encerrar tem q fazer o login
+                System.out.print("Voce veio para a entrevista de emprego? Se sim, digite '1': "); 
+                do{ papel = myObj.nextLine();
+                }while(papel == null);
+
+                if(papel.equals("1")) funcao = 2;
+                else funcao = 1;
             }else if(escolha.equals("3")) return;
 
             System.out.print("\n");
         }
 
-
         System.out.println("Bem vindo!");
-        //myObj.close();
+
 
         
 
         
 
-        //a partir daqui acontece a bifurcacao que vai entrrar
+
         boolean sair = false;
 
-        while(!sair){       //pra caso uma pessoa troque de funcao
-            //System.out.println("TESTEEEEEEEEEEEE");
+        while(!sair){
             funcao = ContaExisteQualFuncao(NomeDeUsuario,publico);
 
             if(funcao == 1) sair = ElevadorClientes(NomeDeUsuario,publico,Arcade);
-            //else if(funcao == 2) sair = ElevadorFuncionarios(NomeDeUsuario,carteiras);
-            else if(funcao == 3) sair = ElevadorDeLuxo(NomeDeUsuario);
+            else if(funcao == 2) sair = ElevadorFuncionarios(NomeDeUsuario,publico,Arcade);
+            else if(funcao == 4) sair = ElevadorDeLuxo(NomeDeUsuario);
             else return;
         }
-        
-        
-        
 
-        //receber dados de um usuario totalmente novo
-        //dependendo do seu tipo salvar ele em um local diferente (grupos de dados)
-        //dependendo da sua funcao mostrar opcoes diferentes de tarefas a executar
-        //todas as funcoes sao automaticas e de apenas impressao da tela, retornando pras opcoes ou sair da conta
-        //todas as funcoes lidam com indices aleatorios dos grupos de dados para serem os outros "humanos" das interacoes
-        //esses outros humanos tambem sofrem as consequencias que foram mostradas para o usuario
-        //salvar os dados no final para guardar o estado atual de cada execucao
-        
         return;
     }
 
 
-    //private static int ContaExisteQualFuncao(String NomeDeUsuario, RepositorioJogador publico, RepositorioFuncionario carteiras){
-    private static int ContaExisteQualFuncao(String NomeDeUsuario, RepositorioJogador publico){
+    
+    private static int ContaExisteQualFuncao(String NomeDeUsuario, RepositorioPessoas publico){
 
         int funcao = -1;
-        funcao = publico.JogadorExiste(NomeDeUsuario);
-        if(funcao == -1){
-            //funcao = carteiras.FuncionarioExiste(NomeDeUsuario);
-            if(funcao == -1){
-                //se tiver outro repositorio pra olhar..
-            }    
-        }
-        return funcao;      //se a conta nao existe retorna -1, se existe retorna seu tipo
+        funcao = publico.PessoaExiste(NomeDeUsuario);
+        return funcao;
     }
 
 
@@ -118,7 +97,7 @@ public class TesteSistema{         //classe de teste (Main)
 
 
 
-    private static boolean ElevadorClientes(String NomeDeUsuario, RepositorioJogador publico, TesteJogo Arcade){
+    private static boolean ElevadorClientes(String NomeDeUsuario, RepositorioPessoas publico, IUJogo Arcade){
 
         boolean sair = false;
         String escolha;
@@ -135,43 +114,30 @@ public class TesteSistema{         //classe de teste (Main)
 
             }else if(escolha.equals("2")){
                 sair = config_conta(NomeDeUsuario,publico);
-                if(sair) return false; 
-                //se a pessoa pedir pra voltar de la, sair recebe falso aqui, se vir verdade, dai e pra retornar daq sem sair do loop main
-                
+                if(sair) return false;
 
             }else if(escolha.equals("3")) sair = true;
-            
-
-
         }
-
-        //myObj.close();
         return true;
     }
 
 
-    /* 
+    
 
-    private static boolean ElevadorFuncionarios(String NomeDeUsuario, RepositorioFuncionario carteiras){
-
-
-
-
-
+    private static boolean ElevadorFuncionarios(String NomeDeUsuario, RepositorioPessoas publico, IUJogo Arcade){
         return true;
     }
 
-    */
+    
 
     private static boolean ElevadorDeLuxo(String NomeDeUsuario){
-
         return true;
     }
 
-    private static void Jogar(String NomeDeUsuario, RepositorioJogador publico, TesteJogo Arcade){
+    private static void Jogar(String NomeDeUsuario, RepositorioPessoas publico, IUJogo Arcade){
 
         Scanner myObj = new Scanner(System.in);
-        TesteJogo arcade = new TesteJogo();
+        IUJogo arcade = new IUJogo();
 
         int escolha;
         boolean sucesso = false;
@@ -189,9 +155,19 @@ public class TesteSistema{         //classe de teste (Main)
             else{
                 
                 do{
+                    aposta = 0.0;
                     System.out.print("\nQuanto vc deseja apostar em Reais? Utilize ',' para centavos, ok? R$ ");
-                    aposta = myObj.nextDouble();
-                }while(!publico.PodeArcar(NomeDeUsuario,aposta));
+                    try{
+                        aposta = myObj.nextDouble();
+                        publico.PodeArcar(NomeDeUsuario,aposta);
+                    }catch(SaldoInsuficienteException ex){
+                        System.out.println("Saldo Insuficiente pra esse valor!");
+                    }catch(SemSaldoException ex){
+                        System.out.println("Voce nao possui nenhum saldo disponivel!");
+                    }catch(ValorInvalidoException ex){
+                        System.out.println("Valor inserido e invalido, tente novamente.\n");
+                    }
+                }while(aposta == 0.0);
                 publico.IniciarJogo(NomeDeUsuario,Arcade,escolha,aposta);
                 sucesso = true;
             }
@@ -202,19 +178,22 @@ public class TesteSistema{         //classe de teste (Main)
     }
 
 
-    private static boolean config_conta(String NomeDeUsuario, RepositorioJogador publico){
+    private static boolean config_conta(String NomeDeUsuario, RepositorioPessoas publico){
 
-        //se a pessoa mudar de classe, retorna verdade, se simplesmente voltar, retorna falso pra nao sair do loop de elevador
         int escolha;
         Scanner myObj = new Scanner(System.in);
         boolean sempre = true;
         double saldo_atual;
+        int funcao = ContaExisteQualFuncao(NomeDeUsuario, publico);
 
         while(sempre){
 
             System.out.println("\nO que vc deseja fazer? \n1 - consultar saldo \n2 - matricula vip \n3 - Patrocinar um jogador");
-            //System.out.println("4 - entrevista de emprego");
-            System.out.println("4 - apagar conta \n5 - voltar");      //ver top 5
+            System.out.println("4 - apagar conta");
+            if(funcao == 1) System.out.println("5 - Fazer entrevista de emprego");
+            else if(funcao == 2) System.out.println("5 - Pedir demissão");
+            System.out.println("6 - voltar");
+            
             escolha = myObj.nextInt();
 
             if(escolha == 1){
@@ -226,15 +205,28 @@ public class TesteSistema{         //classe de teste (Main)
 
                 boolean vip = publico.EVip(NomeDeUsuario);
                 double matricula;
-                if(!vip) publico.AtualizarMatricula(NomeDeUsuario);
+                if(!vip) publico.AtualizarFuncao(NomeDeUsuario,false);
 
                 do{
                     System.out.print("\nVoce lucra 1% a mais a cada 1000 Reais pagos, quanto deseja pagar? Utilize ',' para centavos, ok? R$ ");
-                    matricula = myObj.nextDouble();
-                }while(!publico.PodeArcar(NomeDeUsuario,matricula));
+                   
+                    matricula = 0.0;
+                    try{
+                        matricula = myObj.nextDouble();
+                        publico.PodeArcar(NomeDeUsuario,matricula);
+                    }catch(SaldoInsuficienteException ex){
+                        System.out.println("Saldo Insuficiente pra esse valor!");
+                    }catch(SemSaldoException ex){
+                        System.out.println("Voce nao possui nenhum saldo disponivel!");
+                        return true;
+                    }catch(ValorInvalidoException ex){
+                        System.out.println("Valor inserido e invalido, tente novamente.\n");
+                        return true;
+                    }
+                }while(matricula == 0.0);
                 
                 publico.DarPropina(NomeDeUsuario,matricula);
-                return true;      //se vip for uma classe diferente.. precisa dessa linha
+                return true;
             }else if(escolha == 3){
                 
                 String destinatario;
@@ -247,15 +239,31 @@ public class TesteSistema{         //classe de teste (Main)
 
                 do{
                     System.out.print("\nQuanto vc deseja investir em " + destinatario + "? Utilize ',' para centavos, ok? R$ ");
-                    investimento = myObj.nextDouble();
-                }while(!publico.PodeArcar(NomeDeUsuario,investimento));
+                    investimento = 0.0;
+                    try{
+                        investimento = myObj.nextDouble();
+                        publico.PodeArcar(NomeDeUsuario,investimento);
+                    }catch(SaldoInsuficienteException ex){
+                        System.out.println("Saldo Insuficiente pra esse valor!");
+                    }catch(SemSaldoException ex){
+                        System.out.println("Voce nao possui nenhum saldo disponivel!");
+                        return true;
+                    }catch(ValorInvalidoException ex){
+                        System.out.println("Valor inserido e invalido, tente novamente.\n");
+                        return true;
+                    }
+                }while(investimento == 0.0);
                 publico.XpatrocinarY(NomeDeUsuario,destinatario,investimento);
             
             }else if(escolha == 4){
 
                 publico.Deletar(NomeDeUsuario);
                 return true;
-            }else if(escolha == 5) return false;
+            }else if(escolha == 5){
+
+                publico.AtualizarFuncao(NomeDeUsuario,true);
+                return true;
+            }else if(escolha == 6) return false;
 
         }
 

@@ -8,8 +8,6 @@ public class JogadorVip extends Jogador{
 
   @Override
   public void setConta(int conta){
-
-    this.vip = true;
     this.conta = conta;
 
     Random gerador = new Random(); 
@@ -22,21 +20,17 @@ public class JogadorVip extends Jogador{
 
     this.saldo -= pacote;
     this.TotalPago += pacote;
-    setTaxaBonus();         //pode chamar so assim ou precisa do 'this.'?
+    setTaxaBonus();
 
   }
 
   public void setTaxaBonus(){
-    this.TaxaBonus = (TotalPago / 100000);    //a cada 1000 reais, 1% de bonus
+    this.TaxaBonus = (TotalPago / 100000);
 	}
 
   @Override
   public void transacao(double montante){     
     this.saldo += montante + (montante * TaxaBonus);
-  }
-
-  private void setScore(double score){
-    this.score = score;
   }
 
 }

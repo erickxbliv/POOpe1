@@ -7,7 +7,7 @@ import java.util.Scanner;
 import java.util.Collections;       //?
 
 
-public class TesteJogo {
+public class IUJogo {
     //não pode ter um score negativo, o mínimo é 0;
 
     private ArrayList<String> lista = new ArrayList<>();
@@ -55,7 +55,6 @@ public class TesteJogo {
                 System.out.println("Em que cor vc vai apostar? \n1 - vermelho \n2 - preto \n3 - branco \n4 - cancelar");
                 selecao = myObj.nextInt();
             }while(selecao < 1 || selecao > 4);
-            //}while(false);
 
             if(selecao == 4) return 0.0;
             multiplicador = Roleta(selecao);
@@ -67,6 +66,21 @@ public class TesteJogo {
         return 0.00;
     }
 
+    public void Escritorio(int escolha){
+
+        String NomeDoJogo = this.lista.get(escolha - 1);
+        Scanner myObj = new Scanner(System.in);
+        String resultado;
+
+        if(NomeDoJogo.equals("Caca Niquel")){
+
+            System.out.println("Digite 3 numeros entre 0 e 2: ");
+            resultado = myObj.nextLine();
+        }else if(NomeDoJogo.equals("Roleta")){
+
+        }
+    }
+
 
     public double Roleta(int selecao){
 
@@ -76,7 +90,7 @@ public class TesteJogo {
         cores.add("Branco");
 
         Random gerador = new Random();
-        int resultado = gerador.nextInt(101);   //de 0 a 100
+        int resultado = gerador.nextInt(101);
         int cor;
 
         if(resultado == 50) cor = 3;
@@ -122,10 +136,14 @@ public class TesteJogo {
             System.out.println("Infelizmente vc teve azar, perdeu!");
             return -1.0;
         } 
-        //Collections.sort(rank);
     }
 
 
+
+    public double minas(){
+
+        return 0.0;
+    }
 
     
 

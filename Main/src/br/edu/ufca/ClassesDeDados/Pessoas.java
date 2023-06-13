@@ -1,14 +1,14 @@
 package br.edu.ufca.ClassesDeDados;
 import java.util.Random;
 
-public abstract class Pessoas implements Comparable<Jogador> {
+public abstract class Pessoas implements IPessoas{
     
-    public String nome;    //nome da pessoa
-    public int id;         //seu identificador entre a populacao
+    public String nome;
+    public int id;
     public int funcao;
  
-    protected int conta;      //a conta da pessoa
-    protected double saldo = 0.0;   //o dinheiro disponivel na conta
+    protected int conta;
+    protected double saldo = 0.0;
 
     public int data_criacao;
 
@@ -40,7 +40,7 @@ public abstract class Pessoas implements Comparable<Jogador> {
         this.conta = conta;
 
         Random gerador = new Random(); 
-        double saldo = gerador.nextInt(conta);      //melhorar isso.. como fazer pra decidir o dinheiro na conta da pessoa?
+        double saldo = gerador.nextInt(conta);
         setSaldo(saldo);
     }
 
@@ -64,4 +64,40 @@ public abstract class Pessoas implements Comparable<Jogador> {
 
     }
 
+
+
+
+
+
+
+
+
+
+
+
+
+    public void transacao(double montante){
+        return;
+    }
+    public void patrocinar(Jogador recebedor,double montante){
+        return;
+    }
+    public boolean tem_suficiente(double aposta){
+        return false;
+    }
+    public double getScore(){
+        return -1.0;
+    }
+    public void propina(double pacote){
+        return;
+    }
+    public int compareTo(Jogador outroJogador){
+        return -1;
+    }
+    public void setTaxaBonus(){
+        return;
+    }
+    public void cheque(){
+        return;
+    }
 }
